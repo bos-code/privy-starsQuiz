@@ -6,80 +6,10 @@
     <link rel="stylesheet" href="./src/css/index.css" />
     <title>Queeze - Categories</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: '#008080',
-              accent: '#FFD700',
-              'background-light': '#f0f4f4',
-              'background-dark': '#0a1a1a',
-              'text-light': '#111111',
-              'text-dark': '#f0f4f4',
-            },
-            fontFamily: {
-              display: ['Manrope', 'sans-serif'],
-            },
-            borderRadius: {
-              DEFAULT: '0.5rem',
-              lg: '0.75rem',
-              xl: '1rem',
-              full: '9999px',
-            },
-          },
-        },
-      };
-    </script>
-
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-
-      .h-scroll {
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-      }
-
-      .h-scroll::-webkit-scrollbar {
-        height: 6px;
-      }
-      .h-scroll::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 9999px;
-      }
-
-      .card-elevate {
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .card-elevate:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-      }
-
-      body {
-        min-height: 100dvh;
-      }
-    </style>
   </head>
 
-  <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
-  >
+  <body>
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-      <!-- Header -->
       <header
         class="flex items-center justify-between bg-background-light dark:bg-background-dark p-4 pb-2 sticky top-0 z-10 border-b border-primary/20"
       >
@@ -179,45 +109,5 @@
         </div>
       </nav>
     </div>
-
-    <script>
-      const categories = [
-        { title: 'Science', icon: 'science', quizzes: 10 },
-        { title: 'History', icon: 'history_edu', quizzes: 15 },
-        { title: 'Mathematics', icon: 'calculate', quizzes: 22 },
-        { title: 'Technology', icon: 'memory', quizzes: 18 },
-        { title: 'Literature', icon: 'auto_stories', quizzes: 14 },
-        { title: 'Sports', icon: 'sports_esports', quizzes: 19 },
-        { title: 'Art & Design', icon: 'palette', quizzes: 16 },
-        { title: 'Programming', icon: 'code', quizzes: 25 },
-        { title: 'Languages', icon: 'language', quizzes: 14 },
-        { title: 'Geography', icon: 'travel_explore', quizzes: 17 },
-        { title: 'Psychology', icon: 'psychology', quizzes: 12 },
-        { title: 'Food & Drink', icon: 'local_dining', quizzes: 11 },
-        { title: 'Music', icon: 'music_note', quizzes: 9 },
-        { title: 'Movies', icon: 'movie', quizzes: 13 },
-        { title: 'Finance', icon: 'account_balance', quizzes: 8 },
-      ];
-
-      function populateCategories() {
-        const template = document.getElementById('category-template');
-        const mobileContainer = document.getElementById('mobile-categories');
-        const desktopContainer = document.getElementById('desktop-categories');
-
-        categories.forEach(cat => {
-          const clone = template.content.cloneNode(true);
-          clone.querySelector('.icon').textContent = cat.icon;
-          clone.querySelector('.title').textContent = cat.title;
-          clone.querySelector(
-            '.quizzes'
-          ).textContent = `${cat.quizzes} quizzes`;
-
-          mobileContainer.appendChild(clone.cloneNode(true));
-          desktopContainer.appendChild(clone);
-        });
-      }
-
-      populateCategories();
-    </script>
   </body>
 </html>
