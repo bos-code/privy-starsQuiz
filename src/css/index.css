@@ -264,3 +264,28 @@ nav a p {
 .article-card {
   @apply card flex-none snap-start w-[70%] sm:w-52 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer;
 }
+
+/* HOVER EFFECTS ON THE NAVBAR */
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+.underline-animation {
+  position: relative;
+}
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: oklch(82% 0.189 84.429); /* accent color */
+  transition: width 0.3s ease;
+}
+.underline-animation:hover::after {
+  width: 100%;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <title>Privy Stars Quiz - Leaderboard</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  </head>
+
+  <body class="bg-base-200 min-h-screen font-sans text-base-content">
+    <!-- ✅ Navbar -->
+    <div class="navbar bg-base-100 shadow-sm p-6">
+      <div class="navbar-start">
+        <!-- Mobile Dropdown -->
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <span class="iconify text-2xl" data-icon="mdi:menu"></span>
+          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
+          >
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Brand -->
+        <a
+          class="btn btn-ghost text-xl bg-clip-text text-transparent gradient-text bg-[length:200%_auto] bg-left hover:bg-right transition-all duration-700 ease-in-out"
+        >
+          Privy Stars Quiz
+        </a>
+      </div>
+
+      <!-- Center Menu -->
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Side -->
+      <div class="navbar-end flex gap-2">
+        <a class="btn btn-outline btn-sm">Login</a>
+        <a class="btn btn-primary btn-sm text-black">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- 🏆 Leaderboard Section -->
+    <!-- 🏆 Leaderboard Section -->
+    <main class="px-4 py-10">
+      <h1 class="text-center text-2xl font-bold mb-6">Leaderboard</h1>
+
+      <!-- Filter Buttons -->
+      <div class="flex justify-center gap-2 mb-8">
+        <button class="btn btn-sm btn-outline btn-primary">All-Time</button>
+        <button class="btn btn-sm btn-outline">This Week</button>
+        <button class="btn btn-sm btn-outline">Today</button>
+      </div>
+
+      <!-- Podium Top 3 -->
+      <div
+        class="flex flex-col md:flex-row justify-center items-end gap-6 bg-base-100 rounded-lg p-6 mb-10"
+      >
+        <!-- 2nd -->
+        <div class="flex flex-col items-center">
+          <div class="avatar">
+            <div class="w-16 rounded-full">
+              <img
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=liam"
+                alt="Liam Williams"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <p class="mt-2 font-semibold">Liam Williams</p>
+          <p class="text-gray-400 text-sm">9,800 pts</p>
+        </div>
+
+        <!-- 1st -->
+        <div class="flex flex-col items-center relative">
+          <span
+            class="iconify text-warning text-3xl absolute -top-8"
+            data-icon="mdi:crown"
+          ></span>
+          <div class="avatar">
+            <div
+              class="w-20 rounded-full ring ring-warning ring-offset-base-100 ring-offset-2"
+            >
+              <img
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=ava"
+                alt="Ava Miller"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <p class="mt-2 font-semibold text-warning">Ava Miller</p>
+          <p class="text-warning/80 text-sm">10,500 pts</p>
+        </div>
+
+        <!-- 3rd -->
+        <div class="flex flex-col items-center">
+          <div class="avatar">
+            <div class="w-14 rounded-full">
+              <img
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=noah"
+                alt="Noah Brown"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <p class="mt-2 font-semibold">Noah Brown</p>
+          <p class="text-gray-400 text-sm">9,500 pts</p>
+        </div>
+      </div>
+
+      <!-- Leaderboard List -->
+      <div class="space-y-3">
+        <div class="flex items-center bg-base-100 p-3 rounded-lg">
+          <span class="w-6 text-gray-400 font-bold text-center">4</span>
+          <div class="avatar mx-3">
+            <div class="w-10 rounded-full">
+              <img
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=olivia"
+                alt="Olivia Jones"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium">Olivia Jones</p>
+            <p class="text-gray-400 text-sm">9,200 pts</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center bg-primary/20 border border-primary/40 p-3 rounded-lg"
+        >
+          <span class="w-6 text-primary font-bold text-center">5</span>
+          <div class="avatar mx-3">
+            <div
+              class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+            >
+              <img
+                id="user-avatar"
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=user"
+                alt="You"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-primary">You</p>
+            <p class="text-primary/70 text-sm">8,950 pts</p>
+          </div>
+          <span
+            class="iconify text-primary text-xl"
+            data-icon="mdi:medal-outline"
+          ></span>
+        </div>
+
+        <div class="flex items-center bg-base-100 p-3 rounded-lg">
+          <span class="w-6 text-gray-400 font-bold text-center">6</span>
+          <div class="avatar mx-3">
+            <div class="w-10 rounded-full">
+              <img
+                src="https://api.dicebear.com/9.x/adventurer/svg?seed=william"
+                alt="William Garcia"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium">William Garcia</p>
+            <p class="text-gray-400 text-sm">8,700 pts</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
