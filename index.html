@@ -1,560 +1,306 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="ultraglow">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Privy Stars — Sign Up</title>
-    <meta
-      name="description"
-      content="Sign up for Privy Stars Quiz — simple, accessible signup page."
-    />
-    <!-- Inline styles as requested -->
-    <style>
-      :root {
-        --bg: #0f1724; /* deep navy */
-        --card: #0b1220;
-        --muted: #9aa4b2;
-        --accent: #7c3aed; /* purple */
-        --accent-2: #06b6d4; /* teal */
-        --glass: rgba(255, 255, 255, 0.04);
-        --radius: 16px;
-        color-scheme: dark;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        background: linear-gradient(180deg, var(--bg) 0%, #071226 100%);
-      }
-      .container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 32px;
-      }
-
-      .card {
-        width: 100%;
-        max-width: 960px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.02),
-          rgba(255, 255, 255, 0.01)
-        );
-        border-radius: calc(var(--radius) - 4px);
-        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-        display: grid;
-        grid-template-columns: 1fr 420px;
-        overflow: hidden;
-      }
-
-      /* Left panel (marketing) */
-      .panel-left {
-        padding: 48px 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        background: linear-gradient(
-          135deg,
-          rgba(124, 58, 237, 0.06),
-          rgba(6, 182, 212, 0.02)
-        );
-      }
-      .brand {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-      .logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-      }
-      .title {
-        font-size: 20px;
-        color: white;
-        font-weight: 700;
-      }
-      .headline {
-        font-size: 28px;
-        color: white;
-        margin: 8px 0 0;
-      }
-      .sub {
-        color: var(--muted);
-        line-height: 1.5;
-      }
-      .features {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-      .pill {
-        background: var(--glass);
-        padding: 10px;
-        border-radius: 12px;
-        font-size: 14px;
-        color: var(--muted);
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      /* Right panel (form) */
-      .panel-right {
-        padding: 36px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        background: linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 0.01),
-          rgba(255, 255, 255, 0)
-        );
-      }
-      h2 {
-        margin: 0;
-        color: white;
-      }
-      p.lead {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 8px;
-      }
-      .row {
-        display: flex;
-        gap: 12px;
-      }
-      .field {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      label {
-        font-size: 13px;
-        color: var(--muted);
-      }
-      input,
-      select {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 12px 14px;
-        border-radius: 10px;
-        color: white;
-        font-size: 14px;
-        outline: none;
-      }
-      input:focus,
-      select:focus {
-        box-shadow: 0 4px 18px rgba(124, 58, 237, 0.12);
-        border-color: rgba(124, 58, 237, 0.6);
-      }
-      .help {
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 12px 16px;
-        border-radius: 12px;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-      }
-      .btn-primary {
-        background: linear-gradient(90deg, var(--accent), var(--accent-2));
-        color: white;
-      }
-      .btn-ghost {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.04);
-        color: var(--muted);
-      }
-
-      .meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 8px;
-      }
-      .small {
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      .avatar-row {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-      .avatar-preview {
-        width: 64px;
-        height: 64px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-      }
-
-      .divider {
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.03),
-          transparent
-        );
-        margin: 8px 0;
-        border-radius: 2px;
-      }
-
-      .error {
-        color: #ff6b6b;
-        font-size: 13px;
-      }
-
-      /* Responsive */
-      @media (max-width: 900px) {
-        .card {
-          grid-template-columns: 1fr;
-          padding: 0;
-        }
-        .panel-left {
-          display: none;
-        }
-        .panel-right {
-          padding: 28px;
-        }
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privy Stars Quiz</title>
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <div class="card" role="region" aria-label="Sign up card">
-        <!-- Left marketing panel -->
-        <div class="panel-left" aria-hidden="true">
-          <div class="brand">
-            <div class="logo">PS</div>
-            <div style="display: flex; flex-direction: column">
-              <div class="title">Privy Stars Quiz</div>
-              <div class="sub">Learning that sparkles ✨</div>
+
+  <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
+    <!-- 🌐 Navbar -->
+    <nav
+      class="bg-base-20 flex justify-between items-center border-none px-4 md:px-10 shadow-sm sticky top-0 z-50"
+    >
+      <!-- 🌟 Brand -->
+      <div class="border-none">
+        <a
+          href="/"
+          class="text-xl font-semibold text-primary hover:text-accent transition-colors duration-200"
+        >
+          Privy Stars Quiz
+        </a>
+      </div>
+
+      <!-- 💻 Desktop Links -->
+      <div class="hidden md:flex">
+        <ul class="flex items-center gap-8">
+          <li>
+            <a
+              href="categories.html"
+              class="relative text-base text-base-content transition-all hover:text-primary after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+            >
+              Categories
+            </a>
+          </li>
+          <li>
+            <a
+              href="profile.html"
+              class="relative text-base text-base-content transition-all hover:text-primary after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 🧭 Right Icons -->
+      <div class="flex items-center gap-2">
+        <!-- Search -->
+        <button
+          class="btn btn-circle hover:bg-base-300 transition-colors duration-200"
+        >
+          <span class="iconify text-xl" data-icon="mdi:magnify"></span>
+        </button>
+
+        <!-- Notifications -->
+        <button
+          class="btn btn-ghost btn-circle hover:bg-base-300 transition-colors duration-200"
+        >
+          <div class="indicator">
+            <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
+            <span class="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+
+        <!-- Profile/Login -->
+        <div class="dropdown dropdown-end hidden md:block">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle avatar"
+          >
+            <div class="w-10 rounded-full" id="user-avatar">
+              <img
+                src="https://api.dicebear.com/9.x/avataaars/svg"
+                alt="profile"
+              />
             </div>
           </div>
-
-          <h3 class="headline">Create your account</h3>
-          <p class="sub">
-            Join students and teachers who already use Privy Stars to build
-            confidence and track progress.
-          </p>
-
-          <div class="features">
-            <div class="pill">✓ Timed quizzes</div>
-            <div class="pill">✓ Leaderboards</div>
-            <div class="pill">✓ Progress reports</div>
-            <div class="pill">✓ Teacher tools</div>
-          </div>
-
-          <div style="margin-top: auto; font-size: 13px; color: var(--muted)">
-            Already have an account?
-            <a
-              href="login.html"
-              style="
-                color: var(--accent);
-                text-decoration: none;
-                font-weight: 600;
-              "
-              >Sign in</a
-            >
-          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52"
+          >
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="logout.html">Logout</a></li>
+          </ul>
         </div>
 
-        <!-- Right form panel -->
-        <div class="panel-right">
-          <div>
-            <h2>Get started</h2>
-            <p class="lead">
-              Create your free Privy Stars account — it only takes a minute.
-            </p>
+        <!-- 📱 Mobile Dropdown -->
+        <div class="dropdown dropdown-end md:hidden">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle hover:bg-base-300 transition-colors duration-200"
+          >
+            <span class="iconify text-xl" data-icon="mdi:menu"></span>
           </div>
-
-          <form id="signupForm" novalidate>
-            <div class="row">
-              <div class="field" style="flex: 1">
-                <label for="first">First name</label>
-                <input
-                  id="first"
-                  name="first"
-                  type="text"
-                  placeholder="Chidera"
-                  required
-                />
-              </div>
-
-              <div class="field" style="flex: 1">
-                <label for="last">Last name</label>
-                <input
-                  id="last"
-                  name="last"
-                  type="text"
-                  placeholder="Okonkwo"
-                />
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@school.edu"
-                required
-              />
-              <div class="help">
-                Use your school email for teacher accounts.
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="field" style="flex: 1">
-                <label for="password">Password</label>
-                <div style="position: relative">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Create password"
-                    minlength="8"
-                    required
-                    style="width: 100%"
-                  />
-                  <button
-                    type="button"
-                    id="togglePwd"
-                    aria-label="Show password"
-                    title="Show/Hide"
-                    style="
-                      position: absolute;
-                      right: 6px;
-                      top: 6px;
-                      border: none;
-                      background: transparent;
-                      color: var(--muted);
-                      padding: 6px;
-                      border-radius: 8px;
-                      cursor: pointer;
-                    "
-                  >
-                    👁️
-                  </button>
-                </div>
-                <div class="help">
-                  Min 8 characters. Use letters and numbers for strength.
-                </div>
-              </div>
-
-              <div class="field" style="flex: 1">
-                <label for="confirm">Confirm password</label>
-                <input
-                  id="confirm"
-                  name="confirm"
-                  type="password"
-                  placeholder="Confirm password"
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="row" style="align-items: center">
-              <div class="field" style="flex: 1">
-                <label for="role">Account type</label>
-                <select id="role" name="role" aria-label="Account type">
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
-                  <option value="admin">Administrator</option>
-                </select>
-              </div>
-
-              <div class="field" style="width: 160px">
-                <label>Avatar</label>
-                <div class="avatar-row">
-                  <div id="avatarPreview" class="avatar-preview">PS</div>
-                  <button
-                    type="button"
-                    id="regen"
-                    class="btn btn-ghost"
-                    title="Randomize avatar"
-                  >
-                    Regenerate
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div
-              style="
-                display: flex;
-                gap: 8px;
-                flex-wrap: wrap;
-                align-items: center;
-              "
-            >
-              <button type="submit" class="btn btn-primary">
-                Create account
-              </button>
-              <button type="button" id="continueGoogle" class="btn btn-ghost">
-                Continue with Google
-              </button>
-              <div style="margin-left: auto" class="small">
-                By continuing you agree to our
-                <a href="#" style="color: var(--accent); text-decoration: none"
-                  >Terms</a
-                >
-              </div>
-            </div>
-
-            <div
-              id="errorBox"
-              class="error"
-              role="status"
-              aria-live="polite"
-              style="display: none"
-            ></div>
-          </form>
-
-          <div style="margin-top: 8px; font-size: 13px; color: var(--muted)">
-            Already signed up?
-            <a
-              href="login.html"
-              style="color: var(--accent); text-decoration: none"
-              >Log in</a
-            >
-          </div>
+          <ul
+            tabindex="-1"
+            class="menu dropdown-content mt-3 w-52 p-2 shadow bg-base-300 rounded-box"
+          >
+            <li><a href="index.html">Home</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <!-- Inline script (vanilla) -->
-    <script>
-      (function () {
-        const form = document.getElementById("signupForm");
-        const pwd = document.getElementById("password");
-        const confirm = document.getElementById("confirm");
-        const toggle = document.getElementById("togglePwd");
-        const errorBox = document.getElementById("errorBox");
-        const avatar = document.getElementById("avatarPreview");
-        const regen = document.getElementById("regen");
+    <main>
+      <!-- 🌟 Hero Section -->
+      <section class="hero min-h-[70vh] bg-base-200 text-center px-6">
+        <div class="hero-content flex-col max-w-3xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+            Welcome to
+            <span class="italic text-primary">Privy Stars Quiz System</span>
+          </h1>
+          <p class="text-base-content/80 leading-relaxed mb-4">
+            A smart, engaging, and fun quiz platform developed for
+            <strong>Privy Stars School</strong> — where learning meets
+            excitement. Connect, compete, and grow your knowledge through
+            interactive quizzes.
+          </p>
+          <p class="text-base-content/70 mb-8">
+            Designed for students, teachers, and administrators to track
+            progress, share feedback, and enjoy an interactive learning
+            experience.
+          </p>
+          <a href="categories.html" class="btn btn-primary btn-wide"
+            >Get Started</a
+          >
+        </div>
+      </section>
 
-        function showError(message) {
-          errorBox.textContent = message;
-          errorBox.style.display = "block";
-        }
-        function clearError() {
-          errorBox.style.display = "none";
-          errorBox.textContent = "";
-        }
+      <!-- 🧠 About Section -->
+      <section class="py-16 bg-base-300">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="text-3xl font-bold mb-3 text-primary">
+            What is the Privy Stars Quiz App?
+          </h2>
+          <p class="text-base-content/80">
+            It’s a complete academic tool for the Privy Stars learning
+            ecosystem. Teachers can create quizzes, students can participate
+            from anywhere, and administrators can monitor progress — all in one
+            platform.
+          </p>
+        </div>
 
-        toggle.addEventListener("click", () => {
-          const type = pwd.type === "password" ? "text" : "password";
-          pwd.type = type;
-          confirm.type = type;
-          toggle.textContent = type === "text" ? "🙈" : "👁️";
-        });
+        <div class="grid gap-10 lg:grid-cols-3 max-w-6xl mx-auto px-6">
+          <!-- Example card -->
+          <div
+            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl"
+          >
+            <div class="card-body text-center">
+              <span
+                class="iconify text-4xl mb-2 text-primary"
+                data-icon="mdi:home"
+              ></span>
+              <h3 class="card-title justify-center text-primary">Home</h3>
+              <p class="text-base-content/80">
+                Entry point welcoming users and introducing quiz categories.
+              </p>
+            </div>
+          </div>
 
-        function setAvatarSeed(seed) {
-          // lightweight avatar using initials + seed color shift
-          const initials =
-            (document.getElementById("first").value || "P")
-              .charAt(0)
-              .toUpperCase() +
-            (document.getElementById("last").value || "")
-              .charAt(0)
-              .toUpperCase();
-          avatar.textContent = initials || "PS";
-          // shift background gradient using seed
-          const h = seed % 360;
-          avatar.style.background = `linear-gradient(135deg, hsl(${h} 80% 55%), hsl(${
-            (h + 60) % 360
-          } 70% 45%))`;
-        }
+          <div
+            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl"
+          >
+            <div class="card-body text-center">
+              <span
+                class="iconify text-4xl mb-2 text-accent"
+                data-icon="mdi:login"
+              ></span>
+              <h3 class="card-title justify-center text-accent">Login</h3>
+              <p class="text-base-content/80">
+                Secure access for students, teachers, and admins.
+              </p>
+            </div>
+          </div>
 
-        regen.addEventListener("click", () => {
-          const seed = Math.floor(Math.random() * 360);
-          setAvatarSeed(seed);
-        });
+          <div
+            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl"
+          >
+            <div class="card-body text-center">
+              <span
+                class="iconify text-4xl mb-2 text-info"
+                data-icon="mdi:quiz"
+              ></span>
+              <h3 class="card-title justify-center text-info">Quiz</h3>
+              <p class="text-base-content/80">
+                Timed questions with progress tracking and feedback.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        // keep avatar initials synced
-        ["first", "last"].forEach((id) => {
-          document
-            .getElementById(id)
-            .addEventListener("input", () =>
-              setAvatarSeed((Math.random() * 360) | 0)
-            );
-        });
+      <!-- ✨ Why Privy Stars -->
+      <section class="py-16 bg-base-200">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="text-3xl font-bold mb-3 text-secondary">
+            Why Choose Privy Stars Quiz?
+          </h2>
+          <p class="text-base-content/80">
+            Learning should be exciting! Privy Stars Quiz blends education with
+            play, fun, and growth.
+          </p>
+        </div>
 
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          clearError();
-          const email = form.email.value.trim();
-          const password = form.password.value;
-          const confirmPwd = form.confirm.value;
+        <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto px-6">
+          <div class="card bg-base-300 shadow-md rounded-2xl">
+            <div class="card-body items-center text-center">
+              <span
+                class="iconify text-4xl text-primary mb-2"
+                data-icon="mdi:target"
+              ></span>
+              <h3 class="card-title text-primary">Goal-Oriented</h3>
+              <p class="text-base-content/80">
+                Strengthen understanding with consistent assessments.
+              </p>
+            </div>
+          </div>
 
-          if (!email) return showError("Please enter your email.");
-          if (password.length < 8)
-            return showError("Password must be at least 8 characters.");
-          if (password !== confirmPwd)
-            return showError("Passwords do not match.");
+          <div class="card bg-base-300 shadow-md rounded-2xl">
+            <div class="card-body items-center text-center">
+              <span
+                class="iconify text-4xl text-accent mb-2"
+                data-icon="mdi:gamepad-variant"
+              ></span>
+              <h3 class="card-title text-accent">Interactive</h3>
+              <p class="text-base-content/80">
+                Animations, instant feedback, and sound engage students.
+              </p>
+            </div>
+          </div>
 
-          // simulate submission (replace with real API call)
-          const payload = {
-            first: form.first.value.trim(),
-            last: form.last.value.trim(),
-            email,
-            role: form.role.value,
-          };
+          <div class="card bg-base-300 shadow-md rounded-2xl">
+            <div class="card-body items-center text-center">
+              <span
+                class="iconify text-4xl text-info mb-2"
+                data-icon="mdi:book-open-page-variant"
+              ></span>
+              <h3 class="card-title text-info">Educational</h3>
+              <p class="text-base-content/80">
+                Boosts knowledge, comprehension, and critical thinking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-          // Show a tiny success state and reset (this is where you'd integrate Firebase / server)
-          const btn = form.querySelector('button[type="submit"]');
-          btn.disabled = true;
-          btn.textContent = "Creating...";
-          setTimeout(() => {
-            btn.disabled = false;
-            btn.textContent = "Create account";
-            alert("Account created for " + payload.email + " (demo)");
-            form.reset();
-            setAvatarSeed((Math.random() * 360) | 0);
-          }, 900);
-        });
+    <!-- ⚡ Footer -->
+    <footer
+      class="bg-base-300 text-base-content py-10 px-6 flex flex-wrap justify-between gap-8 md:gap-16"
+    >
+      <aside class="max-w-sm">
+        <h3 class="font-bold text-xl mb-2 text-primary">Privy Stars Quiz</h3>
+        <p class="opacity-80 leading-relaxed">
+          A digital learning system by
+          <strong class="text-primary">Privy Stars School</strong> — empowering
+          students to learn, play, and grow smarter.
+        </p>
+      </aside>
 
-        // init avatar
-        setAvatarSeed(210);
-      })();
-    </script>
+      <nav class="flex flex-col gap-2">
+        <h6 class="footer-title text-base font-semibold mb-2 text-accent">
+          Explore
+        </h6>
+        <a href="index.html" class="link link-hover hover:text-primary">Home</a>
+        <a href="#" class="link link-hover hover:text-primary">Quiz</a>
+        <a href="#" class="link link-hover hover:text-primary">Leaderboard</a>
+        <a href="#" class="link link-hover hover:text-primary">Dashboard</a>
+      </nav>
+
+      <nav class="flex flex-col gap-2">
+        <h6 class="footer-title text-base font-semibold mb-2 text-info">
+          Support
+        </h6>
+        <a href="#" class="link link-hover hover:text-accent">Help Center</a>
+        <a href="feedback.html" class="link link-hover hover:text-accent"
+          >Feedback</a
+        >
+        <a href="feedback.html" class="link link-hover hover:text-accent"
+          >Report Issue</a
+        >
+      </nav>
+
+      <nav class="flex flex-col gap-2">
+        <h6 class="footer-title text-base font-semibold mb-2 text-warning">
+          School
+        </h6>
+        <a href="#" class="link link-hover hover:text-info"
+          >Privy Stars School</a
+        >
+        <a href="#" class="link link-hover hover:text-info">Our Mission</a>
+        <a href="#" class="link link-hover hover:text-info">Contact Us</a>
+      </nav>
+    </footer>
+
+    <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>

@@ -1,176 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="ultraglow">
   <head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/css/index.css" />
-    <title>quiz app</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privy Stars — Sign Up</title>
+    <meta
+      name="description"
+      content="Sign up for Privy Stars Quiz — simple, accessible signup page."
+    />
+    <!-- Inline styles as requested -->
+    <style>
+      :root {
+        --bg: #0f1724; /* deep navy */
+        --card: #0b1220;
+        --muted: #9aa4b2;
+        --accent: #7c3aed; /* purple */
+        --accent-2: #06b6d4; /* teal */
+        --glass: rgba(255, 255, 255, 0.04);
+        --radius: 16px;
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg) 0%, #071226 100%);
+      }
+      .container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 960px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border-radius: calc(var(--radius) - 4px);
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        overflow: hidden;
+      }
+
+      /* Left panel (marketing) */
+      .panel-left {
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.06),
+          rgba(6, 182, 212, 0.02)
+        );
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+      }
+      .title {
+        font-size: 20px;
+        color: white;
+        font-weight: 700;
+      }
+      .headline {
+        font-size: 28px;
+        color: white;
+        margin: 8px 0 0;
+      }
+      .sub {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .pill {
+        background: var(--glass);
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 14px;
+        color: var(--muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      /* Right panel (form) */
+      .panel-right {
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      h2 {
+        margin: 0;
+        color: white;
+      }
+      p.lead {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      label {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      input,
+      select {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px 14px;
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        outline: none;
+      }
+      input:focus,
+      select:focus {
+        box-shadow: 0 4px 18px rgba(124, 58, 237, 0.12);
+        border-color: rgba(124, 58, 237, 0.6);
+      }
+      .help {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: white;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+      }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+      }
+      .small {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .avatar-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .avatar-preview {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.03),
+          transparent
+        );
+        margin: 8px 0;
+        border-radius: 2px;
+      }
+
+      .error {
+        color: #ff6b6b;
+        font-size: 13px;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .card {
+          grid-template-columns: 1fr;
+          padding: 0;
+        }
+        .panel-left {
+          display: none;
+        }
+        .panel-right {
+          padding: 28px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <nav>
-      <div class="navbar bg-base-100 shadow-sm">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>
+    <div class="container">
+      <div class="card" role="region" aria-label="Sign up card">
+        <!-- Left marketing panel -->
+        <div class="panel-left" aria-hidden="true">
+          <div class="brand">
+            <div class="logo">PS</div>
+            <div style="display: flex; flex-direction: column">
+              <div class="title">Privy Stars Quiz</div>
+              <div class="sub">Learning that sparkles ✨</div>
             </div>
-            <ul
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          </div>
+
+          <h3 class="headline">Create your account</h3>
+          <p class="sub">
+            Join students and teachers who already use Privy Stars to build
+            confidence and track progress.
+          </p>
+
+          <div class="features">
+            <div class="pill">✓ Timed quizzes</div>
+            <div class="pill">✓ Leaderboards</div>
+            <div class="pill">✓ Progress reports</div>
+            <div class="pill">✓ Teacher tools</div>
+          </div>
+
+          <div style="margin-top: auto; font-size: 13px; color: var(--muted)">
+            Already have an account?
+            <a
+              href="login.html"
+              style="
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 600;
+              "
+              >Sign in</a
             >
-              <li><a href=".">login</a></li>
-              <li><a>Portfolio</a></li>
-              <li><a>About</a></li>
-            </ul>
           </div>
         </div>
-        <div class="navbar-center">
-          <a class="btn btn-ghost text-xl">daisyUI</a>
-        </div>
-        <div class="navbar-end">
-          <button class="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button>
-          <button class="btn btn-ghost btn-circle">
-            <div class="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+
+        <!-- Right form panel -->
+        <div class="panel-right">
+          <div>
+            <h2>Get started</h2>
+            <p class="lead">
+              Create your free Privy Stars account — it only takes a minute.
+            </p>
+          </div>
+
+          <form id="signupForm" novalidate>
+            <div class="row">
+              <div class="field" style="flex: 1">
+                <label for="first">First name</label>
+                <input
+                  id="first"
+                  name="first"
+                  type="text"
+                  placeholder="Chidera"
+                  required
                 />
-              </svg>
-              <span class="badge badge-xs badge-primary indicator-item"></span>
+              </div>
+
+              <div class="field" style="flex: 1">
+                <label for="last">Last name</label>
+                <input
+                  id="last"
+                  name="last"
+                  type="text"
+                  placeholder="Okonkwo"
+                />
+              </div>
             </div>
-          </button>
-        </div>
-      </div>
-    </nav>
-    <div
-      class="relative flex h-auto min-h-screen w-full flex-col items-center justify-center bg-background-dark dark group/design-root overflow-x-hidden p-4"
-    >
-      <div class="w-full max-w-md">
-        <h1
-          class="text-primary tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6"
-        >
-          Queeze
-        </h1>
-        <h2
-          class="text-white tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-8 pt-5"
-        >
-          Create Your Account
-        </h2>
 
-        <form class="flex flex-col gap-4 px-4" id="signUpForm">
-          <label class="flex flex-col min-w-40 flex-1">
-            <p class="text-white text-base font-medium leading-normal pb-2">
-              Email
-            </p>
-            <input
-              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary border border-white/20 bg-white/5 focus:border-primary h-14 placeholder:text-white/40 p-[15px] text-base font-normal leading-normal"
-              placeholder="Enter your email"
-              id="email"
-              type="email"
-              required
-            />
-          </label>
-
-          <label class="flex flex-col min-w-40 flex-1">
-            <p class="text-white text-base font-medium leading-normal pb-2">
-              Password
-            </p>
-            <div class="flex w-full flex-1 items-stretch rounded-lg">
+            <div class="field">
+              <label for="email">Email</label>
               <input
-                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary border border-white/20 bg-white/5 focus:border-primary h-14 placeholder:text-white/40 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal"
-                placeholder="Enter your password"
-                type="password"
-                id="password"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@school.edu"
                 required
               />
-              <div
-                class="text-white/40 flex border border-white/20 bg-white/5 items-center justify-center pr-[15px] rounded-r-lg border-l-0"
-              >
-                <span class="material-symbols-outlined cursor-pointer"
-                  >visibility</span
+              <div class="help">
+                Use your school email for teacher accounts.
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field" style="flex: 1">
+                <label for="password">Password</label>
+                <div style="position: relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Create password"
+                    minlength="8"
+                    required
+                    style="width: 100%"
+                  />
+                  <button
+                    type="button"
+                    id="togglePwd"
+                    aria-label="Show password"
+                    title="Show/Hide"
+                    style="
+                      position: absolute;
+                      right: 6px;
+                      top: 6px;
+                      border: none;
+                      background: transparent;
+                      color: var(--muted);
+                      padding: 6px;
+                      border-radius: 8px;
+                      cursor: pointer;
+                    "
+                  >
+                    👁️
+                  </button>
+                </div>
+                <div class="help">
+                  Min 8 characters. Use letters and numbers for strength.
+                </div>
+              </div>
+
+              <div class="field" style="flex: 1">
+                <label for="confirm">Confirm password</label>
+                <input
+                  id="confirm"
+                  name="confirm"
+                  type="password"
+                  placeholder="Confirm password"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row" style="align-items: center">
+              <div class="field" style="flex: 1">
+                <label for="role">Account type</label>
+                <select id="role" name="role" aria-label="Account type">
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="admin">Administrator</option>
+                </select>
+              </div>
+
+              <div class="field" style="width: 160px">
+                <label>Avatar</label>
+                <div class="avatar-row">
+                  <div id="avatarPreview" class="avatar-preview">PS</div>
+                  <button
+                    type="button"
+                    id="regen"
+                    class="btn btn-ghost"
+                    title="Randomize avatar"
+                  >
+                    Regenerate
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                align-items: center;
+              "
+            >
+              <button type="submit" class="btn btn-primary">
+                Create account
+              </button>
+              <button type="button" id="continueGoogle" class="btn btn-ghost">
+                Continue with Google
+              </button>
+              <div style="margin-left: auto" class="small">
+                By continuing you agree to our
+                <a href="#" style="color: var(--accent); text-decoration: none"
+                  >Terms</a
                 >
               </div>
             </div>
-          </label>
 
-          <label class="flex flex-col min-w-40 flex-1">
-            <p class="text-white text-base font-medium leading-normal pb-2">
-              Confirm Password
-            </p>
-            <div class="flex w-full flex-1 items-stretch rounded-lg">
-              <input
-                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary border border-white/20 bg-white/5 focus:border-primary h-14 placeholder:text-white/40 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal"
-                placeholder="Confirm your password"
-                type="password"
-                id="confirmPassword"
-                required
-              />
-              <div
-                class="text-white/40 flex border border-white/20 bg-white/5 items-center justify-center pr-[15px] rounded-r-lg border-l-0"
-              >
-                <span class="material-symbols-outlined cursor-pointer"
-                  >visibility</span
-                >
-              </div>
-            </div>
-          </label>
+            <div
+              id="errorBox"
+              class="error"
+              role="status"
+              aria-live="polite"
+              style="display: none"
+            ></div>
+          </form>
 
-          <div class="pt-8 pb-4">
-            <button
-              type="submit"
-              class="w-full h-14 bg-primary text-background-dark font-bold text-lg rounded-lg hover:bg-primary/90 transition-colors"
+          <div style="margin-top: 8px; font-size: 13px; color: var(--muted)">
+            Already signed up?
+            <a
+              href="login.html"
+              style="color: var(--accent); text-decoration: none"
+              >Log in</a
             >
-              Create Account
-            </button>
           </div>
-        </form>
-
-        <p class="text-center text-white/60 py-6">
-          Already have an account?
-          <a class="text-primary font-medium hover:underline" href="#"
-            >Sign In</a
-          >
-        </p>
+        </div>
       </div>
     </div>
-    <script type="module" src="/src/js/main.js"></script>
+
+    <!-- Inline script (vanilla) -->
+    <script>
+      (function () {
+        const form = document.getElementById("signupForm");
+        const pwd = document.getElementById("password");
+        const confirm = document.getElementById("confirm");
+        const toggle = document.getElementById("togglePwd");
+        const errorBox = document.getElementById("errorBox");
+        const avatar = document.getElementById("avatarPreview");
+        const regen = document.getElementById("regen");
+
+        function showError(message) {
+          errorBox.textContent = message;
+          errorBox.style.display = "block";
+        }
+        function clearError() {
+          errorBox.style.display = "none";
+          errorBox.textContent = "";
+        }
+
+        toggle.addEventListener("click", () => {
+          const type = pwd.type === "password" ? "text" : "password";
+          pwd.type = type;
+          confirm.type = type;
+          toggle.textContent = type === "text" ? "🙈" : "👁️";
+        });
+
+        function setAvatarSeed(seed) {
+          // lightweight avatar using initials + seed color shift
+          const initials =
+            (document.getElementById("first").value || "P")
+              .charAt(0)
+              .toUpperCase() +
+            (document.getElementById("last").value || "")
+              .charAt(0)
+              .toUpperCase();
+          avatar.textContent = initials || "PS";
+          // shift background gradient using seed
+          const h = seed % 360;
+          avatar.style.background = `linear-gradient(135deg, hsl(${h} 80% 55%), hsl(${
+            (h + 60) % 360
+          } 70% 45%))`;
+        }
+
+        regen.addEventListener("click", () => {
+          const seed = Math.floor(Math.random() * 360);
+          setAvatarSeed(seed);
+        });
+
+        // keep avatar initials synced
+        ["first", "last"].forEach((id) => {
+          document
+            .getElementById(id)
+            .addEventListener("input", () =>
+              setAvatarSeed((Math.random() * 360) | 0)
+            );
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          clearError();
+          const email = form.email.value.trim();
+          const password = form.password.value;
+          const confirmPwd = form.confirm.value;
+
+          if (!email) return showError("Please enter your email.");
+          if (password.length < 8)
+            return showError("Password must be at least 8 characters.");
+          if (password !== confirmPwd)
+            return showError("Passwords do not match.");
+
+          // simulate submission (replace with real API call)
+          const payload = {
+            first: form.first.value.trim(),
+            last: form.last.value.trim(),
+            email,
+            role: form.role.value,
+          };
+
+          // Show a tiny success state and reset (this is where you'd integrate Firebase / server)
+          const btn = form.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.textContent = "Creating...";
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = "Create account";
+            alert("Account created for " + payload.email + " (demo)");
+            form.reset();
+            setAvatarSeed((Math.random() * 360) | 0);
+          }, 900);
+        });
+
+        // init avatar
+        setAvatarSeed(210);
+      })();
+    </script>
   </body>
 </html>
