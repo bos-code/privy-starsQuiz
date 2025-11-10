@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultraglow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Category | Privy Stars Quiz</title>
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="navbar-glass flex items-center justify-between px-4 py-3">
+      <button class="btn btn-ghost btn-circle text-primary">
+        <iconify-icon icon="mdi:arrow-left" width="24"></iconify-icon>
+      </button>
+
+      <h1 class="gradient-text text-2xl font-bold text-center">
+        Select Category
+      </h1>
+
+      <button class="btn btn-ghost btn-circle text-primary">
+        <iconify-icon icon="mdi:account" width="24"></iconify-icon>
+      </button>
+    </header>
+
+    <!-- Main -->
+    <main class="grow px-5 py-8">
+      <h2 class="text-lg mb-8 text-center gradient-text font-semibold">
+        Choose a subject to test your skills
+      </h2>
+
+      <!-- Mobile Scroll -->
+    
+     <div class="hidden">
+         <article class="glass-box article-card sweep-hover">
+          <iconify-icon
+            icon="mdi:calculator-variant"
+            class="text-primary text-4xl mb-3"
+          ></iconify-icon>
+          <h3 class="text-lg font-semibold text-primary">Mathematics</h3>
+          <p class="text-sm text-base-content/70">Challenge your logic</p>
+        </article>
+
+        <article
+          class="glass-box article-card sweep-hover""
+        >
+          <iconify-icon
+            icon="mdi:book-open-page-variant"
+            class="text-accent text-4xl mb-3"
+          ></iconify-icon>
+          <h3 class="text-lg font-semibold text-accent">English</h3>
+          <p class="text-sm text-base-content/70">Grammar & comprehension</p>
+        </article>
+
+        <article
+          class="glass-box article-card sweep-hover""
+        >
+          <iconify-icon
+            icon="mdi:flask-outline"
+            class="text-info text-4xl mb-3"
+          ></iconify-icon>
+          <h3 class="text-lg font-semibold text-info">Science</h3>
+          <p class="text-sm text-base-content/70">Explore the world</p>
+        </article>
+
+        <article
+          class="glass-box article-card sweep-hover""
+        >
+          <iconify-icon
+            icon="mdi:history"
+            class="text-warning text-4xl mb-3"
+          ></iconify-icon>
+          <h3 class="text-lg font-semibold text-warning">History</h3>
+          <p class="text-sm text-base-content/70">Past and people</p>
+        </article>
+     </div>
+
+      <!-- Desktop Grid -->
+      <section
+        id="desktop-categories"
+        class="hidden md:grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6"
+      >
+        <div
+          class="ultra-card sweep-hover cursor-pointer flex flex-col items-center justify-center text-center"
+        >
+          <iconify-icon
+            icon="mdi:calculator-variant"
+            class="text-primary text-5xl mb-4"
+          ></iconify-icon>
+          <h3 class="text-xl font-semibold text-primary">Mathematics</h3>
+          <p class="text-sm text-base-content/70">Challenge your logic</p>
+        </div>
+
+        <div
+          class="ultra-card sweep-hover cursor-pointer flex flex-col items-center justify-center text-center"
+        >
+          <iconify-icon
+            icon="mdi:book-open-page-variant"
+            class="text-accent text-5xl mb-4"
+          ></iconify-icon>
+          <h3 class="text-xl font-semibold text-accent">English</h3>
+          <p class="text-sm text-base-content/70">Grammar & comprehension</p>
+        </div>
+
+        <div
+          class="ultra-card sweep-hover cursor-pointer flex flex-col items-center justify-center text-center"
+        >
+          <iconify-icon
+            icon="mdi:flask-outline"
+            class="text-info text-5xl mb-4"
+          ></iconify-icon>
+          <h3 class="text-xl font-semibold text-info">Science</h3>
+          <p class="text-sm text-base-content/70">Explore the world</p>
+        </div>
+
+        <div
+          class="ultra-card sweep-hover cursor-pointer flex flex-col items-center justify-center text-center"
+        >
+          <iconify-icon
+            icon="mdi:history"
+            class="text-warning text-5xl mb-4"
+          ></iconify-icon>
+          <h3 class="text-xl font-semibold text-warning">History</h3>
+          <p class="text-sm text-base-content/70">Past and people</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Optional subtle footer -->
+    <footer class="footer-gradient py-4 text-center text-sm">
+      <p class="opacity-80">© 2025 Privy Stars Quiz</p>
+    </footer>
+  </body>
+</html>

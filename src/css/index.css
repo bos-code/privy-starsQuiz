@@ -1,11 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
-  name: "ultraglow";
+  name: 'ultraglow';
   default: false;
-  prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: 'dark';
   --color-base-100: oklch(14% 0 0);
   --color-base-200: oklch(20% 0 0);
   --color-base-300: oklch(26% 0 0);
@@ -166,7 +165,7 @@
 }
 
 .sweep-hover::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -75%;
@@ -189,4 +188,79 @@
   100% {
     left: 125%;
   }
+}
+
+/* HOME PAGE */
+
+/* Header */
+header {
+  @apply flex items-center justify-between   
+  p-4 pb-2 sticky top-0 z-10 border-b border-primary/20;
+}
+
+header h1 {
+  @apply text-primary text-accent text-2xl font-bold tracking-tight flex-1 ml-4;
+}
+
+header button {
+  @apply flex cursor-pointer items-center justify-center rounded-full h-10 w-10 
+  bg-transparent text-primary text-accent;
+}
+
+/* Main */
+main {
+  @apply flex-grow p-4;
+}
+
+main h2 {
+  @apply text-xl font-bold mb-6 text-primary text-base-100;
+}
+
+/* Mobile view */
+.h-scroll {
+  @apply flex gap-4 px-2 pb-4 snap-x snap-mandatory overflow-x-auto;
+}
+
+#mobile-categories {
+  @apply flex gap-4;
+}
+
+#mobile-categories article {
+  @apply flex-none snap-start w-[46%] sm:w-40 rounded-xl border border-primary/30 
+   bg-primary/20 p-4 flex flex-col justify-between cursor-pointer;
+}
+
+/* Desktop grid */
+#desktop-categories {
+  @apply hidden md:grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-5;
+}
+
+/* Footer */
+nav {
+  @apply sticky bottom-0 left-0 right-0;
+}
+
+nav div {
+  @apply flex gap-2 border-t border-primary/20  backdrop-blur-sm px-4 pb-3 pt-2;
+}
+
+nav a {
+  @apply flex flex-1 flex-col items-center justify-end gap-1 
+  text-primary;
+}
+
+nav a:first-child {
+  @apply text-accent;
+}
+
+nav a p {
+  @apply text-xs font-medium;
+}
+
+.mobile {
+  @apply md:hidden bg-accent hidden;
+}
+
+.article-card {
+  @apply card flex-none snap-start w-[70%] sm:w-52 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer;
 }
