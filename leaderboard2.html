@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultraglow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privy Stars Quiz | Overview</title>
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  </head>
+
+  <body class="bg-base-200 min-h-screen font-sans text-base-content">
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-sm p-6">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <span class="iconify text-2xl" data-icon="mdi:menu"></span>
+          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
+          >
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+          </ul>
+        </div>
+
+        <a
+          class="btn btn-ghost text-xl bg-clip-text text-transparent gradient-text bg-[length:200%_auto] bg-left hover:bg-right transition-all duration-700 ease-in-out"
+        >
+          Privy Stars Quiz
+        </a>
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar-end flex gap-2">
+        <a class="btn btn-outline btn-sm">Login</a>
+        <a class="btn btn-primary btn-sm text-black">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Main Showcase -->
+    <main class="px-5 py-10 space-y-16">
+      <!-- Profile Section -->
+      <section class="bg-base-100 rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-6 gradient-text">Profile Overview</h2>
+        <div class="flex items-center gap-6">
+          <div class="avatar placeholder">
+            <div class="bg-primary text-black rounded-full w-20">
+              <span class="text-2xl font-bold">U</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">Prosper Alex</h3>
+            <p class="text-sm opacity-70">Member since 2024</p>
+            <p class="text-sm text-primary mt-1">Level: Expert</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div class="stat bg-base-200 rounded-lg p-3">
+            <div class="stat-title text-xs">Total Quizzes</div>
+            <div class="stat-value text-primary text-lg">52</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg p-3">
+            <div class="stat-title text-xs">Best Score</div>
+            <div class="stat-value text-accent text-lg">98%</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg p-3">
+            <div class="stat-title text-xs">Rank</div>
+            <div class="stat-value text-info text-lg">#12</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg p-3">
+            <div class="stat-title text-xs">Badges</div>
+            <div class="stat-value text-warning text-lg">7</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="bg-base-100 rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-6 gradient-text">Categories</h2>
+
+        <div
+          class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 text-center"
+        >
+          <div
+            class="p-6 rounded-2xl bg-base-200 hover:bg-primary/10 border border-base-300 hover:border-primary transition-all duration-300 cursor-pointer"
+          >
+            <iconify-icon
+              icon="mdi:calculator-variant"
+              class="text-primary text-5xl mb-3"
+            ></iconify-icon>
+            <h3 class="font-semibold text-primary">Mathematics</h3>
+            <p class="text-sm opacity-70">Challenge your logic</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-base-200 hover:bg-accent/10 border border-base-300 hover:border-accent transition-all duration-300 cursor-pointer"
+          >
+            <iconify-icon
+              icon="mdi:book-open-page-variant"
+              class="text-accent text-5xl mb-3"
+            ></iconify-icon>
+            <h3 class="font-semibold text-accent">English</h3>
+            <p class="text-sm opacity-70">Grammar & comprehension</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-base-200 hover:bg-info/10 border border-base-300 hover:border-info transition-all duration-300 cursor-pointer"
+          >
+            <iconify-icon
+              icon="mdi:flask-outline"
+              class="text-info text-5xl mb-3"
+            ></iconify-icon>
+            <h3 class="font-semibold text-info">Science</h3>
+            <p class="text-sm opacity-70">Explore the world</p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-base-200 hover:bg-warning/10 border border-base-300 hover:border-warning transition-all duration-300 cursor-pointer"
+          >
+            <iconify-icon
+              icon="mdi:history"
+              class="text-warning text-5xl mb-3"
+            ></iconify-icon>
+            <h3 class="font-semibold text-warning">History</h3>
+            <p class="text-sm opacity-70">Past and people</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leaderboard Section -->
+      <section class="bg-base-100 rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-6 gradient-text">Leaderboard</h2>
+
+        <!-- Podium -->
+        <div
+          class="flex flex-col md:flex-row justify-center items-end gap-6 bg-base-200 rounded-lg p-6 mb-10"
+        >
+          <div class="flex flex-col items-center">
+            <div class="avatar placeholder">
+              <div
+                class="bg-neutral-focus text-neutral-content rounded-full w-16"
+              >
+                <span>2</span>
+              </div>
+            </div>
+            <p class="mt-2 font-semibold">Liam Williams</p>
+            <p class="text-gray-400 text-sm">9,800 pts</p>
+          </div>
+
+          <div class="flex flex-col items-center relative">
+            <span
+              class="iconify text-warning text-3xl absolute -top-8"
+              data-icon="mdi:crown"
+            ></span>
+            <div class="avatar placeholder">
+              <div class="bg-warning text-black rounded-full w-20">
+                <span>1</span>
+              </div>
+            </div>
+            <p class="mt-2 font-semibold text-warning">Ava Miller</p>
+            <p class="text-warning/80 text-sm">10,500 pts</p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <div class="avatar placeholder">
+              <div class="bg-amber-700 text-neutral-content rounded-full w-14">
+                <span>3</span>
+              </div>
+            </div>
+            <p class="mt-2 font-semibold">Noah Brown</p>
+            <p class="text-gray-400 text-sm">9,500 pts</p>
+          </div>
+        </div>
+
+        <!-- You -->
+        <div
+          class="flex items-center bg-primary/20 border border-primary/40 p-3 rounded-lg mb-3"
+        >
+          <span class="w-6 text-primary font-bold text-center">5</span>
+          <div class="avatar placeholder mx-3">
+            <div class="bg-primary text-black rounded-full w-10">
+              <span>U</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-primary">You</p>
+            <p class="text-primary/70 text-sm">8,950 pts</p>
+          </div>
+          <span
+            class="iconify text-primary text-xl"
+            data-icon="mdi:medal-outline"
+          ></span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-gradient py-4 text-center text-sm mt-auto">
+      <p class="opacity-80">© 2025 Privy Stars Quiz</p>
+    </footer>
+  </body>
+</html>
