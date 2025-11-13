@@ -10,126 +10,182 @@
 
   <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
     <!-- 🌐 Navbar -->
-    <nav
-      class="bg-base-20 flex justify-between items-center border-none px-4 md:px-10 shadow-sm sticky top-0 z-50"
-    >
-      <!-- 🌟 Brand -->
-      <div class="border-none">
-        <a
-          href="/"
-          class="text-xl font-semibold text-primary hover:text-accent transition-colors duration-200"
-        >
-          Privy Stars Quiz
+    <nav class="bg-base-200 shadow-md sticky top-0 z-50">
+      <div
+        class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3"
+      >
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <!-- Text logo (large screens) -->
+          <h1
+            class="hidden sm:block text-xl font-bold text-primary transition-colors duration-300 hover:text-accent"
+          >
+            Privy Stars Quiz
+          </h1>
+          <!-- Image logo (small screens) -->
+          <img
+            src="./src/css/privy-star--logo.png"
+            alt="Privy Stars Logo"
+            class="w-10 h-10 sm:hidden rounded-full object-cover"
+          />
         </a>
-      </div>
 
-      <!-- 💻 Desktop Links -->
-      <div class="hidden md:flex">
-        <ul class="flex items-center gap-8">
+        <!-- Desktop Links -->
+        <!-- Desktop Links -->
+        <ul class="hidden md:flex gap-6 font-medium items-center">
+          <li>
+            <a
+              href="index.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              Home
+            </a>
+          </li>
           <li>
             <a
               href="categories.html"
-              class="relative text-base text-base-content transition-all hover:text-primary after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
             >
               Categories
             </a>
           </li>
           <li>
             <a
-              href="profile.html"
-              class="relative text-base text-base-content transition-all hover:text-primary after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              href="leaderboard.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
             >
-              Profile
+              Leaderboard
+            </a>
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              About
             </a>
           </li>
         </ul>
-      </div>
 
-      <!-- 🧭 Right Icons -->
-      <div class="flex items-center gap-2">
-        <!-- Search -->
-        <button
-          class="btn btn-circle hover:bg-base-300 transition-colors duration-200"
-        >
-          <span class="iconify text-xl" data-icon="mdi:magnify"></span>
-        </button>
+        <!-- Right Side -->
+        <div class="flex items-center gap-2">
+          <!-- Search -->
+          <button class="btn btn-ghost btn-circle">
+            <span class="iconify text-xl" data-icon="mdi:magnify"></span>
+          </button>
 
-        <!-- Notifications -->
-        <button
-          class="btn btn-ghost btn-circle hover:bg-base-300 transition-colors duration-200"
-        >
-          <div class="indicator">
-            <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
-            <span class="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
-
-        <!-- Profile/Login -->
-        <div class="dropdown dropdown-end hidden md:block">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-ghost btn-circle avatar"
-          >
-            <div class="w-10 rounded-full" id="user-avatar">
-              <img
-                src="https://api.dicebear.com/9.x/avataaars/svg"
-                alt="profile"
-              />
+          <!-- Notifications -->
+          <button class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
+              <span class="badge badge-xs badge-primary indicator-item"></span>
             </div>
-          </div>
-          <ul
-            tabindex="0"
-            class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52"
-          >
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li><a href="logout.html">Logout</a></li>
-          </ul>
-        </div>
+          </button>
 
-        <!-- 📱 Mobile Dropdown -->
-        <div class="dropdown dropdown-end md:hidden">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-ghost btn-circle hover:bg-base-300 transition-colors duration-200"
-          >
-            <span class="iconify text-xl" data-icon="mdi:menu"></span>
+          <!-- Theme Toggle -->
+          <label class="swap swap-rotate hidden sm:inline-flex">
+            <input type="checkbox" class="theme-controller" value="dark" />
+            <svg
+              class="swap-on fill-current w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5.64 17.657A9 9 0 1018.36 4.933 9.002 9.002 0 015.64 17.657z"
+              />
+            </svg>
+            <svg
+              class="swap-off fill-current w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2a9.93 9.93 0 00-7.07 2.93A9.93 9.93 0 002 12a9.93 9.93 0 002.93 7.07A9.93 9.93 0 0012 22a9.93 9.93 0 007.07-2.93A9.93 9.93 0 0022 12a9.93 9.93 0 00-2.93-7.07A9.93 9.93 0 0012 2z"
+              />
+            </svg>
+          </label>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img
+                  src="https://api.dicebear.com/9.x/avataaars/svg?seed=User"
+                  alt="Profile"
+                />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-44 p-2 shadow-md"
+            >
+              <li>
+                <a
+                  href="profile.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="settings.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Settings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="logout.html"
+                  class="text-error hover:bg-error hover:text-white transition-colors"
+                  >Logout</a
+                >
+              </li>
+            </ul>
           </div>
-          <ul
-            tabindex="-1"
-            class="menu dropdown-content mt-3 w-52 p-2 shadow bg-base-300 rounded-box"
-          >
-            <li><a href="index.html">Home</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="login.html">Login</a></li>
-          </ul>
+
+          <!-- Mobile Menu -->
+          <div class="dropdown dropdown-end md:hidden">
+            <div tabindex="0" class="btn btn-ghost btn-circle">
+              <span class="iconify text-3xl" data-icon="mdi:menu"></span>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-40 p-2 shadow-md"
+            >
+              <li><a href="index.html">Home</a></li>
+              <li><a href="categories.html">Categories</a></li>
+              <li><a href="leaderboard2.html">Leaderboard</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="profile.html">Profile</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
 
     <main>
       <!-- 🌟 Hero Section -->
-      <section class="hero min-h-[70vh] bg-base-200 text-center px-6">
+      <section class="hero min-h-[50vh] bg-base-200 text-center px-4 sm:px-6">
         <div class="hero-content flex-col max-w-3xl mx-auto">
-          <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+          <h1
+            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 gradient-text"
+          >
             Welcome to
             <span class="italic text-primary">Privy Stars Quiz System</span>
           </h1>
-          <p class="text-base-content/80 leading-relaxed mb-4">
+          <p class="text-base-content/80 leading-relaxed mb-3 sm:mb-4">
             A smart, engaging, and fun quiz platform developed for
             <strong>Privy Stars School</strong> — where learning meets
-            excitement. Connect, compete, and grow your knowledge through
-            interactive quizzes.
+            excitement.
           </p>
-          <p class="text-base-content/70 mb-8">
+          <p class="text-base-content/70 mb-6 sm:mb-8">
             Designed for students, teachers, and administrators to track
             progress, share feedback, and enjoy an interactive learning
             experience.
           </p>
-          <a href="categories.html" class="btn btn-primary btn-wide"
+          <a
+            href="categories.html"
+            class="btn btn-primary btn-wide max-w-full sm:max-w-xs mx-auto"
             >Get Started</a
           >
         </div>
@@ -302,5 +358,6 @@
     </footer>
 
     <script type="module" src="/src/js/main.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </body>
 </html>

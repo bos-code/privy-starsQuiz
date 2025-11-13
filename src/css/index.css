@@ -190,7 +190,35 @@
   }
 }
 
-/* HOME PAGE */
+/* NAV STYLES*/
+.nav-link {
+  position: relative;
+  color: var(--fallback-bc, oklch(var(--bc) / 1));
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, oklch(var(--p)), oklch(var(--a)));
+  transition: width 0.3s;
+}
+.nav-link:hover {
+  color: oklch(var(--a));
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hide search under 480px */
+@media (max-width: 480px) {
+  .btn[aria-label='Search'] {
+    display: none !important;
+  }
+}
 
 /* Header */
 header {
