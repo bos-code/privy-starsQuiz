@@ -1,2 +1,174 @@
 <!-- paste in the nav html hopefully tailwind in here
   -->
+<!DOCTYPE html>
+<html lang="en" data-theme="ultraglow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <title>Navbar UI</title>
+  </head>
+
+  <nav class="bg-base-200 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <!-- Text logo (large screens) -->
+        <h1
+          class="hidden sm:block text-xl font-bold text-primary transition-colors duration-300 hover:text-accent"
+        >
+          Privy Stars Quiz
+        </h1>
+        <!-- Image logo (small screens) -->
+        <img
+          src="./src/css/privy-star--logo.png"
+          alt="Privy Stars Logo"
+          class="w-10 h-10 sm:hidden rounded-full object-cover"
+        />
+      </a>
+
+      <!-- Desktop Links -->
+      <!-- Desktop Links -->
+      <ul class="hidden md:flex gap-6 font-medium items-center">
+        <li>
+          <a
+            href="index.html"
+            class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="categories.html"
+            class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+          >
+            Categories
+          </a>
+        </li>
+        <li>
+          <a
+            href="leaderboard.html"
+            class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+          >
+            Leaderboard
+          </a>
+        </li>
+        <li>
+          <a
+            href="about.html"
+            class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+          >
+            About
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right Side -->
+      <div class="flex items-center gap-2">
+        <!-- Search -->
+        <button class="btn btn-ghost btn-circle">
+          <span class="iconify text-xl" data-icon="mdi:magnify"></span>
+        </button>
+
+        <!-- Notifications -->
+        <button class="btn btn-ghost btn-circle">
+          <div class="indicator">
+            <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
+            <span class="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+
+        <!-- Theme Toggle -->
+        <label class="swap swap-rotate hidden sm:inline-flex">
+          <input type="checkbox" class="theme-controller" value="dark" />
+          <svg
+            class="swap-on fill-current w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M5.64 17.657A9 9 0 1018.36 4.933 9.002 9.002 0 015.64 17.657z"
+            />
+          </svg>
+          <svg
+            class="swap-off fill-current w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2a9.93 9.93 0 00-7.07 2.93A9.93 9.93 0 002 12a9.93 9.93 0 002.93 7.07A9.93 9.93 0 0012 22a9.93 9.93 0 007.07-2.93A9.93 9.93 0 0022 12a9.93 9.93 0 00-2.93-7.07A9.93 9.93 0 0012 2z"
+            />
+          </svg>
+        </label>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img
+                src="https://api.dicebear.com/9.x/avataaars/svg?seed=User"
+                alt="Profile"
+              />
+            </div>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-44 p-2 shadow-md"
+          >
+            <li>
+              <a
+                href="profile.html"
+                class="hover:bg-primary hover:text-white transition-colors"
+                >Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="settings.html"
+                class="hover:bg-primary hover:text-white transition-colors"
+                >Settings</a
+              >
+            </li>
+            <li>
+              <a
+                href="logout.html"
+                class="text-error hover:bg-error hover:text-white transition-colors"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="dropdown dropdown-end md:hidden">
+          <div tabindex="0" class="btn btn-ghost btn-circle">
+            <span class="iconify text-3xl" data-icon="mdi:menu"></span>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-40 p-2 shadow-md"
+          >
+            <li><a href="index.html">Home</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+</html>
+
+<div class="flex-1">
+  <button
+    class="btn btn-ghost btn-circle text-primary hover:bg-primary/10 transition"
+  >
+    <span class="material-symbols-outlined">
+      <iconify-icon icon="mdi:arrow-left" width="24"></iconify-icon>
+    </span>
+  </button>
+</div>

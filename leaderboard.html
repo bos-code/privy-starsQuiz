@@ -5,48 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privy Stars Quiz | Overview</title>
     <link rel="stylesheet" href="./src/css/index.css" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
 
   <body class="bg-base-200 min-h-screen font-sans text-base-content">
     <!-- Navbar -->
-    <div class="navbar bg-base-100 shadow-sm p-6">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-            <span class="iconify text-2xl" data-icon="mdi:menu"></span>
-          </div>
-          <ul
-            tabindex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
+    <nav class="bg-base-200 shadow-md sticky top-0 z-50">
+      <div
+        class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3"
+      >
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <!-- Text logo (large screens) -->
+          <h1
+            class="hidden sm:block text-xl font-bold text-primary transition-colors duration-300 hover:text-accent"
           >
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-          </ul>
-        </div>
-
-        <a
-          class="btn btn-ghost text-xl bg-clip-text text-transparent gradient-text bg-[length:200%_auto] bg-left hover:bg-right transition-all duration-700 ease-in-out"
-        >
-          Privy Stars Quiz
+            Privy Stars Quiz
+          </h1>
+          <!-- Image logo (small screens) -->
+          <img
+            src="./src/css/privy-star--logo.png"
+            alt="Privy Stars Logo"
+            class="w-10 h-10 sm:hidden rounded-full object-cover"
+          />
         </a>
-      </div>
 
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="leaderboard.html">Leaderboard</a></li>
+        <!-- Desktop Links -->
+        <!-- Desktop Links -->
+        <ul class="hidden md:flex gap-6 font-medium items-center">
+          <li>
+            <a
+              href="index.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="categories.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              Categories
+            </a>
+          </li>
+          <li>
+            <a
+              href="leaderboard.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              Leaderboard
+            </a>
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="relative text-base text-base-content transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent"
+            >
+              About
+            </a>
+          </li>
         </ul>
-      </div>
 
-      <div class="navbar-end flex gap-2">
-        <a class="btn btn-outline btn-sm">Login</a>
-        <a class="btn btn-primary btn-sm text-black">Sign Up</a>
+        <!-- Right Side -->
+        <div class="flex items-center gap-2">
+          <!-- Search -->
+          <button class="btn btn-ghost btn-circle">
+            <span class="iconify text-xl" data-icon="mdi:magnify"></span>
+          </button>
+
+          <!-- Notifications -->
+          <button class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
+              <span class="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+          </button>
+
+          <!-- Theme Toggle -->
+          <label class="swap swap-rotate hidden sm:inline-flex">
+            <input type="checkbox" class="theme-controller" value="dark" />
+            <svg
+              class="swap-on fill-current w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5.64 17.657A9 9 0 1018.36 4.933 9.002 9.002 0 015.64 17.657z"
+              />
+            </svg>
+            <svg
+              class="swap-off fill-current w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2a9.93 9.93 0 00-7.07 2.93A9.93 9.93 0 002 12a9.93 9.93 0 002.93 7.07A9.93 9.93 0 0012 22a9.93 9.93 0 007.07-2.93A9.93 9.93 0 0022 12a9.93 9.93 0 00-2.93-7.07A9.93 9.93 0 0012 2z"
+              />
+            </svg>
+          </label>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img
+                  src="https://api.dicebear.com/9.x/avataaars/svg?seed=User"
+                  alt="Profile"
+                />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-44 p-2 shadow-md"
+            >
+              <li>
+                <a
+                  href="profile.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="settings.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Settings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="logout.html"
+                  class="text-error hover:bg-error hover:text-white transition-colors"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div class="dropdown dropdown-end md:hidden">
+            <div tabindex="0" class="btn btn-ghost btn-circle">
+              <span class="iconify text-3xl" data-icon="mdi:menu"></span>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-40 p-2 shadow-md"
+            >
+              <li><a href="index.html">Home</a></li>
+              <li><a href="categories.html">Categories</a></li>
+              <li><a href="leaderboard.html">Leaderboard</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="profile.html">Profile</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
 
     <!-- Main Showcase -->
     <main class="px-5 py-10 space-y-16">
