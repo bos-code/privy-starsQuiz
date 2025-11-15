@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Privy Stars — Sign Up</title>
-
+    <title>Privy Stars — Sign In</title>
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
       rel="stylesheet"
@@ -36,71 +35,62 @@
                 <p class="text-gray-400 text-sm">Learning that sparkles ✨</p>
               </div>
             </div>
-            <h2 class="text-3xl font-bold text-white mb-2">
-              Create your account
-            </h2>
+            <h2 class="text-3xl font-bold text-white mb-2">Welcome back</h2>
             <p class="text-gray-400 leading-relaxed">
-              Join students and teachers building confidence and tracking
-              progress.
+              Sign in to access your account and continue learning.
             </p>
           </div>
           <p class="text-sm text-gray-500 mt-8 mb-8">
-            Already have an account?
-            <a href="login.html" class="text-purple-400 font-medium">Sign in</a>
+            New here?
+            <a href="signup.html" class="text-purple-400 font-medium"
+              >Create account</a
+            >
           </p>
         </div>
 
         <!-- RIGHT: form panel -->
         <div class="flex flex-col gap-6 p-8 overflow-auto">
           <div>
-            <h2 class="text-2xl font-bold text-white">Sign Up</h2>
+            <h2 class="text-2xl font-bold text-white">Sign In</h2>
             <p class="text-gray-400 text-sm">
-              Fill in your details to create an account.
+              Enter your username and password to login.
             </p>
           </div>
 
-          <form id="signupForm" class="flex flex-col gap-4" novalidate>
-            <!-- Full Name -->
+          <form id="loginForm" class="flex flex-col gap-4" novalidate>
+            <!-- Username -->
             <div class="form-control w-full">
               <label class="label">
-                <span class="label-text text-gray-400 text-sm">Full Name</span>
+                <span class="label-text text-gray-400 text-sm">Username</span>
               </label>
               <input
                 type="text"
-                name="name"
-                placeholder="John Doe"
+                name="username"
+                placeholder="johndoe"
                 required
                 class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500"
               />
             </div>
 
-            <!-- Date of Birth -->
-            <div class="form-control w-full">
+            <!-- Password -->
+            <div class="form-control w-full relative">
               <label class="label">
-                <span class="label-text text-gray-400 text-sm"
-                  >Date of Birth</span
-                >
+                <span class="label-text text-gray-400 text-sm">Password</span>
               </label>
               <input
-                type="date"
-                name="dob"
+                type="password"
+                name="password"
+                placeholder="Enter password"
                 required
-                class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500"
+                class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500 pr-10"
               />
-            </div>
-
-            <!-- Class -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text text-gray-400 text-sm">Class</span>
-              </label>
-              <input
-                type="text"
-                name="class"
-                placeholder="Grade 10"
-                required
-                class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500"
-              />
+              <button
+                type="button"
+                id="togglePwd"
+                class="absolute right-3 top-12 text-gray-400 hover:text-white"
+              >
+                👁️
+              </button>
             </div>
 
             <div class="flex flex-wrap items-center gap-3 mt-4">
@@ -108,7 +98,7 @@
                 type="submit"
                 class="btn bg-gradient-to-r from-purple-600 to-cyan-400 text-white font-semibold w-full"
               >
-                Register
+                Sign In
               </button>
             </div>
 
@@ -119,26 +109,33 @@
     </div>
 
     <script>
-      const form = document.getElementById('signupForm');
+      const loginForm = document.getElementById('loginForm');
+      const pwd = loginForm.password;
+      const toggle = document.getElementById('togglePwd');
       const errorBox = document.getElementById('errorBox');
 
-      form.addEventListener('submit', e => {
+      toggle.addEventListener('click', () => {
+        const type = pwd.type === 'password' ? 'text' : 'password';
+        pwd.type = type;
+        toggle.textContent = type === 'text' ? '🙈' : '👁️';
+      });
+
+      loginForm.addEventListener('submit', e => {
         e.preventDefault();
         errorBox.classList.add('hidden');
         errorBox.textContent = '';
 
-        const name = form.name.value.trim();
-        const dob = form.dob.value;
-        const cls = form.class.value.trim();
+        const username = loginForm.username.value.trim();
+        const password = pwd.value;
 
-        if (!name || !dob || !cls) {
-          errorBox.textContent = 'Please fill all fields';
+        if (!username || !password) {
+          errorBox.textContent = 'Please enter both username and password';
           errorBox.classList.remove('hidden');
           return;
         }
 
-        alert(`Registered: ${name} (${cls})`);
-        form.reset();
+        alert(`Signed in as ${username} (demo)`);
+        loginForm.reset();
       });
     </script>
   </body>
