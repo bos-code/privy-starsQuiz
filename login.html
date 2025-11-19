@@ -2,140 +2,152 @@
 <html lang="en" data-theme="ultraglow">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Privy Stars — Sign In</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
-      rel="stylesheet"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DreamBoard Portal — Sign In</title>
+    <link rel="stylesheet" href="./src/css/index.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   </head>
-  <body
-    class="min-h-screen bg-gradient-to-b from-[#0f1724] to-[#071226] flex items-center justify-center p-6"
-  >
-    <div class="w-full max-w-4xl mx-auto">
+  <body class="min-h-screen flex items-center justify-center bg-base-200">
+    <div
+      id="loginCard"
+      class="card-xl w-full max-w-lg rounded-3xl shadow-2xl bg-base-300 p-10 space-y-8"
+    >
+      <!-- Header -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-3xl font-extrabold text-accent">DreamBoard Portal</h2>
+        <p class="text-lg text-base-content/80">Sign in to continue</p>
+      </div>
+
+      <!-- Tabs -->
       <div
-        class="card w-full grid md:grid-cols-[1fr_minmax(360px,420px)] rounded-2xl shadow-xl bg-base-200/10 border border-white/5 backdrop-blur-md overflow-hidden"
+        class="tabs w-full justify-between rounded-xl overflow-hidden border border-base-300 shadow-inner"
       >
-        <!-- LEFT: marketing panel -->
-        <div
-          class="hidden md:flex flex-col justify-between p-10 bg-gradient-to-br from-purple-600/10 to-cyan-400/10"
+        <a
+          class="tab tab-lg tab-bordered tab-active w-1/3 text-center transition-all hover:bg-base-200/50"
+          data-tab="student"
+          >Student</a
         >
-          <div>
-            <div class="flex items-center gap-4 mb-6">
-              <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-cyan-400 text-white font-bold"
-              >
-                PS
-              </div>
-              <div>
-                <h1 class="text-white font-semibold text-lg">
-                  Privy Stars Quiz
-                </h1>
-                <p class="text-gray-400 text-sm">Learning that sparkles ✨</p>
-              </div>
-            </div>
-            <h2 class="text-3xl font-bold text-white mb-2">Welcome back</h2>
-            <p class="text-gray-400 leading-relaxed">
-              Sign in to access your account and continue learning.
-            </p>
-          </div>
-          <p class="text-sm text-gray-500 mt-8 mb-8">
-            New here?
-            <a href="signup.html" class="text-purple-400 font-medium"
-              >Create account</a
-            >
-          </p>
-        </div>
+        <a
+          class="tab tab-lg tab-bordered tabs-lift w-1/3 text-center transition-all hover:bg-base-200/50"
+          data-tab="teacher"
+          >Teacher</a
+        >
+        <a
+          class="tab tab-lg tab-bordered w-1/3 text-center transition-all hover:bg-base-200/50"
+          data-tab="admin"
+          >Admin</a
+        >
+      </div>
 
-        <!-- RIGHT: form panel -->
-        <div class="flex flex-col gap-6 p-8 overflow-auto">
-          <div>
-            <h2 class="text-2xl font-bold text-white">Sign In</h2>
-            <p class="text-gray-400 text-sm">
-              Enter your username and password to login.
-            </p>
-          </div>
+      <!-- Forms Container -->
+      <div class="space-y-6">
+        <!-- Student Form -->
+        <form
+          class="form-tab flex flex-col gap-6"
+          id="student"
+          autocomplete="off"
+        >
+          <label class="form-control w-full">
+            <span class="label-text text-sm">Student ID</span>
+            <input
+              type="text"
+              placeholder="Enter Student ID"
+              class="input input-bordered bg-transparent p-5 input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <label class="form-control w-full">
+            <span class="label-text text-sm">Password</span>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              class="input input-bordered bg-transparent p-5 input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg w-full mt-4">
+            Sign In
+          </button>
+        </form>
 
-          <form id="loginForm" class="flex flex-col gap-4" novalidate>
-            <!-- Username -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text text-gray-400 text-sm">Username</span>
-              </label>
-              <input
-                type="text"
-                name="username"
-                placeholder="johndoe"
-                required
-                class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500"
-              />
-            </div>
+        <!-- Teacher Form -->
+        <form class="form-tab hidden" id="teacher" autocomplete="on">
+          <label class="form-control w-full">
+            <span class="label-text text-lg">Email</span>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              class="input input-bordered input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <label class="form-control w-full">
+            <span class="label-text text-lg">Password</span>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              class="input input-bordered input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg w-full mt-4">
+            Sign In
+          </button>
+          <button type="button" class="btn btn-outline btn-lg w-full mt-2">
+            Continue with Google
+          </button>
+        </form>
 
-            <!-- Password -->
-            <div class="form-control w-full relative">
-              <label class="label">
-                <span class="label-text text-gray-400 text-sm">Password</span>
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter password"
-                required
-                class="input input-bordered w-full bg-transparent text-white border-white/10 focus:border-purple-500 pr-10"
-              />
-              <button
-                type="button"
-                id="togglePwd"
-                class="absolute right-3 top-12 text-gray-400 hover:text-white"
-              >
-                👁️
-              </button>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-3 mt-4">
-              <button
-                type="submit"
-                class="btn bg-gradient-to-r from-purple-600 to-cyan-400 text-white font-semibold w-full"
-              >
-                Sign In
-              </button>
-            </div>
-
-            <p id="errorBox" class="text-red-400 text-sm hidden mt-2"></p>
-          </form>
-        </div>
+        <!-- Admin Form -->
+        <form class="form-tab hidden" id="admin" autocomplete="off">
+          <label class="form-control w-full">
+            <span class="label-text text-lg">Email</span>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              class="input input-bordered input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <label class="form-control w-full">
+            <span class="label-text text-lg">Password</span>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              class="input input-bordered input-lg w-full mt-1"
+              required
+            />
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg w-full mt-4">
+            Sign In
+          </button>
+        </form>
       </div>
     </div>
 
     <script>
-      const loginForm = document.getElementById('loginForm');
-      const pwd = loginForm.password;
-      const toggle = document.getElementById('togglePwd');
-      const errorBox = document.getElementById('errorBox');
-
-      toggle.addEventListener('click', () => {
-        const type = pwd.type === 'password' ? 'text' : 'password';
-        pwd.type = type;
-        toggle.textContent = type === 'text' ? '🙈' : '👁️';
+      // GSAP fade-in animation
+      gsap.from("#loginCard", {
+        opacity: 0,
+        y: 60,
+        duration: 1,
+        ease: "power3.out",
       });
 
-      loginForm.addEventListener('submit', e => {
-        e.preventDefault();
-        errorBox.classList.add('hidden');
-        errorBox.textContent = '';
+      // Tab switching logic
+      const tabs = document.querySelectorAll(".tabs .tab");
+      const forms = document.querySelectorAll(".form-tab");
 
-        const username = loginForm.username.value.trim();
-        const password = pwd.value;
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("tab-active"));
+          tab.classList.add("tab-active");
 
-        if (!username || !password) {
-          errorBox.textContent = 'Please enter both username and password';
-          errorBox.classList.remove('hidden');
-          return;
-        }
-
-        alert(`Signed in as ${username} (demo)`);
-        loginForm.reset();
+          const target = tab.getAttribute("data-tab");
+          forms.forEach((f) => f.classList.add("hidden"));
+          document.getElementById(target).classList.remove("hidden");
+        });
       });
     </script>
   </body>
