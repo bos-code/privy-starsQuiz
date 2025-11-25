@@ -1,126 +1,232 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queeze - Feedback & Support</title>
     <link rel="stylesheet" href="./src/css/index.css" />
-    <title>Queeze - Feedback &amp; Support</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   </head>
-  <body>
-    <div class="relative flex h-auto min-h-screen w-full flex-col">
+  <body class="bg-base-100 text-base-content">
+    <!-- 🌐 Navigation -->
+    <nav class="bg-base-200 shadow-md sticky top-0 z-50">
       <div
-        class="flex items-center background p-4 pb-2 justify-between border-b border-primary/20"
+        class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3"
       >
-        <div class="w-12">
-          <div class="navbar-start">
-            <div class="dropdown">
-              <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h7"
-                  />
-                </svg>
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <!-- Large screen text -->
+          <h1
+            class="hidden sm:block text-xl font-bold text-primary transition-colors duration-300 hover:text-accent"
+          >
+            Privy Stars Quiz
+          </h1>
+          <!-- Small screen image -->
+          <img
+            src="./src/css/privy-star--logo.png"
+            alt="Privy Stars Logo"
+            class="w-10 h-10 sm:hidden rounded-full object-cover"
+          />
+        </a>
+
+        <!-- Desktop Links -->
+        <ul class="hidden md:flex gap-6 font-medium items-center">
+          <li>
+            <a
+              href="index.html"
+              class="relative text-base after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent transition-colors"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="categories.html"
+              class="relative text-base after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent transition-colors"
+            >
+              Categories
+            </a>
+          </li>
+          <li>
+            <a
+              href="leaderboard2.html"
+              class="relative text-base after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent transition-colors"
+            >
+              Leaderboard
+            </a>
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="relative text-base after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-accent after:transition-all after:duration-300 hover:after:w-full hover:text-accent transition-colors"
+            >
+              About
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Side -->
+        <div class="flex items-center gap-2">
+          <!-- Search & Notifications hidden on small screens -->
+          <div class="hidden md:flex items-center gap-2">
+            <button
+              class="btn btn-ghost btn-circle hover:bg-primary/10 transition-all duration-300"
+            >
+              <span class="iconify text-xl" data-icon="mdi:magnify"></span>
+            </button>
+            <button
+              class="btn btn-ghost btn-circle hover:bg-primary/10 transition-all duration-300"
+            >
+              <div class="indicator">
+                <span
+                  class="iconify text-xl"
+                  data-icon="mdi:bell-outline"
+                ></span>
+                <span
+                  class="badge badge-xs badge-primary indicator-item"
+                ></span>
               </div>
-              <ul
-                tabindex="-1"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li><a href="/signup.html">login</a></li>
-                <li><a>Portfolio</a></li>
-                <li><a>About</a></li>
-              </ul>
+            </button>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img
+                  src="https://api.dicebear.com/9.x/avataaars/svg?seed=User"
+                  alt="Profile"
+                />
+              </div>
             </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-44 p-2 shadow-md"
+            >
+              <li>
+                <a
+                  href="profile.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="settings.html"
+                  class="hover:bg-primary hover:text-white transition-colors"
+                  >Settings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="logout.html"
+                  class="text-error hover:bg-error hover:text-white transition-colors"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div class="dropdown dropdown-end md:hidden">
+            <div tabindex="0" class="btn btn-ghost btn-circle">
+              <span class="iconify text-3xl" data-icon="mdi:menu"></span>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-44 p-2 shadow-md"
+            >
+              <li><a href="index.html">Home</a></li>
+              <li><a href="categories.html">Categories</a></li>
+              <li><a href="leaderboard2.html">Leaderboard</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="profile.html">Profile</a></li>
+            </ul>
           </div>
         </div>
-        <h2
-          class="text-base-100 text-base-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center"
-        >
-          Feedback &amp; Support
-        </h2>
+      </div>
+    </nav>
 
-        <div class="flex items-center gap-2">
-          <span class="text-primary text-2xl font-bold">Queeze</span>
+    <!-- 🌟 Page Header -->
+    <header
+      class="bg-base-200 py-8 px-4 sm:py-10 sm:px-6 md:py-12 md:px-8 flex flex-col items-center gap-3"
+    >
+      <!-- Heading -->
+      <h1
+        class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent leading-snug text-center"
+      >
+        Feedback & Support
+      </h1>
+
+      <!-- Paragraph -->
+      <p
+        class="text-sm sm:text-base md:text-lg text-base-content/70 max-w-xs sm:max-w-md md:max-w-2xl text-center leading-relaxed"
+      >
+        We value your feedback! Please provide details to help us improve your
+        Queeze experience.
+      </p>
+    </header>
+
+    <!-- 📝 Feedback Form -->
+    <main class="flex justify-center px-4 py-10">
+      <form
+        class="w-full max-w-2xl space-y-6 bg-base-300 p-8 rounded-2xl shadow-lg"
+      >
+        <!-- Category -->
+        <div>
+          <label
+            for="category"
+            class="block text-base font-medium text-base-content/80 mb-2"
+            >Category</label
+          >
+          <select
+            id="category"
+            class="form-select w-full rounded-lg border border-primary/50 bg-base-200 focus:ring-primary focus:border-primary h-14 px-4 text-base text-base-content"
+          >
+            <option>Select a category</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="general">General Feedback</option>
+          </select>
         </div>
-      </div>
-      <div class="flex-grow p-4">
-        <p
-          class="text-base-100 text-base-100 text-base font-normal leading-normal pb-3 pt-1 px-4 text-center"
-        >
-          We value your feedback. Please provide as much detail as possible to
-          help us improve your Queeze experience.
-        </p>
-        <div class="max-w-2xl mx-auto">
-          <form class="space-y-6">
-            <div class="flex flex-col min-w-40 flex-1">
-              <label
-                class="text-base-100 text-base-100 text-base font-medium leading-normal pb-2"
-                for="category"
-                >Category</label
-              >
-              <div class="relative">
-                <select
-                  class="form-select w-full appearance-none rounded-lg border border-primary/50 bg-teal-900 focus:border-primary focus:ring-primary h-14 pl-4 pr-10 text-base font-normal leading-normal text-base-100 text-base-100 placeholder-gray-400 placeholder-gray-500"
-                  id="category"
-                  style="
-                    --select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27%23FFD700%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M215.39,92.94a8,8,0,0,0-11.32,0L128,169.37,51.94,93.31a8,8,0,0,0-11.32,11.32l82.05,82.05a8,8,0,0,0,11.32,0L215.39,104.26A8,8,0,0,0,215.39,92.94Z%27%3e%3c/path%3e%3c/svg%3e');
-                    background-image: var(--select-button-svg);
-                    background-repeat: no-repeat;
-                    background-position: right 0.75rem center;
-                    background-size: 1.5em 1.5em;
-                  "
-                >
-                  <option>Select a category</option>
-                  <option value="bug">Bug Report</option>
-                  <option value="feature">Feature Request</option>
-                  <option value="general">General Feedback</option>
-                </select>
-              </div>
-            </div>
-            <div class="flex flex-col min-w-40 flex-1">
-              <label
-                class="text-base-100 text-base-100 text-base font-medium leading-normal pb-2"
-                for="description"
-                >Description</label
-              >
-              <textarea
-                class="form-textarea w-full resize-none rounded-lg border border-primary/50 bg-teal-900 focus:border-primary focus:ring-primary min-h-36 p-4 text-base font-normal leading-normal text-base-100 text-base-100 placeholder-gray-400 placeholder-gray-500"
-                id="description"
-                placeholder="Describe the issue or your suggestion in detail."
-              ></textarea>
-            </div>
-            <div class="flex">
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-teal-900/50 bg-teal-900 text-base-100 text-base-100 gap-2 pl-5 text-base font-bold leading-normal tracking-[0.015em] border border-dashed border-primary/50 hover:bg-primary/20 hover:bg-primary/10"
-                type="button"
-              >
-                <span class="material-symbols-outlined text-primary"
-                  >attach_file</span
-                >
-                <span class="truncate">Attach files</span>
-              </button>
-            </div>
-            <div class="flex pt-4">
-              <button
-                class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-teal-950 gap-2 text-base font-bold leading-normal tracking-[0.015em] hover:bg-yellow-300 transition-colors"
-                type="submit"
-              >
-                <span class="truncate">Submit Feedback</span>
-              </button>
-            </div>
-          </form>
+
+        <!-- Description -->
+        <div>
+          <label
+            for="description"
+            class="block text-base font-medium text-base-content/80 mb-2"
+            >Description</label
+          >
+          <textarea
+            id="description"
+            placeholder="Describe the issue or suggestion in detail..."
+            class="w-full rounded-lg border border-primary/50 bg-base-200 focus:ring-primary focus:border-primary p-4 text-base text-base-content min-h-[160px] resize-none"
+          ></textarea>
         </div>
-      </div>
-    </div>
+
+        <!-- Attach Files -->
+        <div>
+          <button
+            type="button"
+            class="flex items-center gap-2 w-full justify-center px-5 h-12 border border-dashed border-primary/50 rounded-lg hover:bg-primary/10 transition-all duration-300 text-base-content font-bold"
+          >
+            <span
+              class="iconify text-primary"
+              data-icon="mdi:attach-file"
+            ></span>
+            Attach files
+          </button>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button
+            type="submit"
+            class="w-full h-12 rounded-lg bg-primary text-base-200 font-bold hover:bg-gradient-to-r hover:from-accent hover:to-primary transition-colors duration-300"
+          >
+            Submit Feedback
+          </button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
