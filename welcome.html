@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultraglow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PSS – Welcome</title>
+    <link href="./src/css/index.css" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen bg-base-100 flex items-center justify-center p-4">
+    <div
+      class="w-full max-w-5xl bg-base-200/40 backdrop-blur-xl rounded-3xl shadow-xl border border-base-300 overflow-hidden grid grid-cols-1 md:grid-cols-2">
+      <!-- LEFT: WELCOME -->
+      <div
+        class="p-10 flex flex-col justify-center items-start text-left border-r border-base-300 bg-gradient-to-br from-base-200/40 to-base-300/40 [@media(max-width:450px)]:items-center [@media(max-width:450px)]:text-center">
+        <h1
+          class="text-4xl md:text-5xl font-bold mb-6 animate__fadeIn animate__animated">
+          Welcome to <span class="text-primary">PSS</span>
+        </h1>
+        <p class="text-base-content/70 text-lg leading-relaxed">
+          Privy Star School learning hub — where brilliance meets technology.
+          Get started with your personalized quiz experience.
+        </p>
+      </div>
+
+      <!-- RIGHT: SIGN-IN + SIGN-UP -->
+      <div
+        class="p-10 flex flex-col justify-center animate__animated animate__fadeInRight">
+        <div class="tabs tabs-boxed mb-6">
+          <a class="tab tab-active" id="signin-tab">Sign In</a>
+          <a class="tab" id="signup-tab">Sign Up</a>
+        </div>
+
+        <!-- SIGN-IN FORM -->
+        <form id="signin-form" class="space-y-4">
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="input input-bordered w-full"
+            autocomplete="email"
+            required />
+
+          <input
+            type="password"
+            placeholder="Password"
+            class="input input-bordered w-full"
+            autocomplete="current-password"
+            required />
+
+          <button class="btn btn-primary w-full">Sign In</button>
+        </form>
+
+        <!-- SIGN-UP FORM -->
+        <form id="signup-form" class="space-y-4 hidden">
+          <input
+            type="text"
+            placeholder="Full Name"
+            class="input input-bordered w-full"
+            autocomplete="name"
+            required />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="input input-bordered w-full"
+            autocomplete="email"
+            required />
+
+          <input
+            type="password"
+            placeholder="Password"
+            class="input input-bordered w-full"
+            autocomplete="new-password"
+            required />
+
+          <button class="btn btn-accent w-full">Create Account</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Tab switching
+      const signinTab = document.getElementById("signin-tab");
+      const signupTab = document.getElementById("signup-tab");
+      const signinForm = document.getElementById("signin-form");
+      const signupForm = document.getElementById("signup-form");
+
+      signinTab.addEventListener("click", () => {
+        signinTab.classList.add("tab-active");
+        signupTab.classList.remove("tab-active");
+        signinForm.classList.remove("hidden");
+        signupForm.classList.add("hidden");
+      });
+
+      signupTab.addEventListener("click", () => {
+        signupTab.classList.add("tab-active");
+        signinTab.classList.remove("tab-active");
+        signupForm.classList.remove("hidden");
+        signinForm.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

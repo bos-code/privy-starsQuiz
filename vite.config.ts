@@ -4,6 +4,9 @@ import path from "path";
 
 export default defineConfig({
   plugins: [tailwindcss()],
+  server: {
+    open: "welcome.html", // <<< This decides the dev entry point
+  },
   build: {
     rollupOptions: {
       input: {
