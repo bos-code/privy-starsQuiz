@@ -46,9 +46,7 @@
             class="input input-bordered w-full"
             autocomplete="current-password"
             required />
-          <a href="./categories.html">
-            <button class="btn btn-primary w-full">Sign In</button>
-          </a>
+          <button class="btn btn-primary w-full">Sign In</button>
         </form>
 
         <!-- SIGN-UP FORM -->
@@ -79,26 +77,6 @@
       </div>
     </div>
 
-    <script>
-      // Tab switching
-      const signinTab = document.getElementById("signin-tab");
-      const signupTab = document.getElementById("signup-tab");
-      const signinForm = document.getElementById("signin-form");
-      const signupForm = document.getElementById("signup-form");
-
-      signinTab.addEventListener("click", () => {
-        signinTab.classList.add("tab-active");
-        signupTab.classList.remove("tab-active");
-        signinForm.classList.remove("hidden");
-        signupForm.classList.add("hidden");
-      });
-
-      signupTab.addEventListener("click", () => {
-        signupTab.classList.add("tab-active");
-        signinTab.classList.remove("tab-active");
-        signupForm.classList.remove("hidden");
-        signinForm.classList.add("hidden");
-      });
-    </script>
+    <script src="./src/js/main.js"></script>
   </body>
 </html>

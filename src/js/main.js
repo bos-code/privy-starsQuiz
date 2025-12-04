@@ -191,3 +191,94 @@ document.querySelectorAll("[data-nav]").forEach((btn) => {
     if (window.innerWidth >= 768 && drawerToggle) drawerToggle.checked = false;
   });
 })();
+
+// Sign up and Sign in fuctionality
+
+const signinTab = document.getElementById("signin-tab");
+const signupTab = document.getElementById("signup-tab");
+const signinForm = document.getElementById("signin-form");
+const signupForm = document.getElementById("signup-form");
+
+// ==========================
+// TAB SWITCHING
+// ==========================
+signinTab.addEventListener("click", () => {
+  signinTab.classList.add("tab-active");
+  signupTab.classList.remove("tab-active");
+  signinForm.classList.remove("hidden");
+  signupForm.classList.add("hidden");
+});
+
+signupTab.addEventListener("click", () => {
+  signupTab.classList.add("tab-active");
+  signinTab.classList.remove("tab-active");
+  signupForm.classList.remove("hidden");
+  signinForm.classList.add("hidden");
+});
+
+// ==========================
+// SIGN UP FUNCTION
+// ==========================
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = signupForm.querySelector("input[type='text']").value;
+  const email = signupForm.querySelector("input[type='email']").value;
+  const password = signupForm.querySelector("input[type='password']").value;
+
+  if (!name || !email || !password) {
+    alert("All fields are required");
+    return;
+  }
+
+  const users = JSON.parse(localStorage.getItem("pss_users")) || [];
+
+  const userExists = users.find((user) => user.email === email);
+  if (userExists) {
+    alert("Account already exists. Please sign in.");
+    return;
+  }
+
+  users.push({ name, email, password });
+  localStorage.setItem("pss_users", JSON.stringify(users));
+
+  alert("Account created successfully!");
+
+  signupForm.reset();
+
+  // Auto switch to sign-in
+  signinTab.click();
+});
+
+// ==========================
+// SIGN IN FUNCTION
+// ==========================
+signinForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const email = signinForm.querySelector("input[type='email']").value;
+  const password = signinForm.querySelector("input[type='password']").value;
+
+  const users = JSON.parse(localStorage.getItem("pss_users")) || [];
+
+  const validUser = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (!validUser) {
+    alert("Invalid email or password");
+    return;
+  }
+
+  // Save logged-in user
+  localStorage.setItem("pss_logged_in", JSON.stringify(validUser));
+
+  // Redirect to categories page
+  window.location.href = "./categories.html";
+});
+
+const user = JSON.parse(localStorage.getItem("pss_logged_in"));
+
+if (!user) {
+  window.location.href = "./index.html";
+}
