@@ -13,6 +13,7 @@ export default defineConfig({
         index: path.resolve(__dirname, "index.html"),
         categories: path.resolve(__dirname, "categories.html"),
         profile: path.resolve(__dirname, "profile.html"),
+        quiz: path.resolve(__dirname, "quiz.html"),
       },
     },
   },
