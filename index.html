@@ -7,390 +7,79 @@
     <link href="./src/css/index.css" rel="stylesheet" />
   </head>
 
-  <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
-    <!-- 🌐 Navbar -->
-    <!-- ===== Top Floating Nav ===== -->
-    <header
-      class="fixed top-4 left-1/2 -translate-x-1/2 w-full flex justify-center z-50">
-      <nav
-        id="omniNav"
-        class="glass-nav max-w-7xl hidden px-6 py-3 rounded-full xl:gap-20 md:flex items-center justify-between relative">
-        <div
-          class="absolute inset-x-0 -bottom-2 hidden md:flex justify-center pointer-events-none">
-          <div class="neon-line w-[90%]"></div>
+  <body class="min-h-screen bg-base-100 flex items-center justify-center p-4">
+    <div
+      class="w-full max-w-5xl bg-base-200/40 backdrop-blur-xl rounded-3xl shadow-xl border border-base-300 overflow-hidden grid grid-cols-1 md:grid-cols-2">
+      <!-- LEFT: WELCOME -->
+      <div
+        class="p-10 flex flex-col justify-center items-start text-left border-r border-base-300 bg-gradient-to-br from-base-200/40 to-base-300/40 [@media(max-width:450px)]:items-center [@media(max-width:450px)]:text-center">
+        <h1
+          class="text-4xl md:text-5xl font-bold mb-6 animate__fadeIn animate__animated">
+          Welcome to <span class="text-primary">PSS</span>
+        </h1>
+        <p class="text-base-content/70 text-lg leading-relaxed">
+          Privy Star School learning hub — where brilliance meets technology.
+          Get started with your personalized quiz experience.
+        </p>
+      </div>
+
+      <!-- RIGHT: SIGN-IN + SIGN-UP -->
+      <div
+        class="p-10 flex flex-col justify-center animate__animated animate__fadeInRight">
+        <div class="tabs tabs-boxed mb-6">
+          <a class="tab tab-active" id="signin-tab">Sign In</a>
+          <a class="tab" id="signup-tab">Sign Up</a>
         </div>
 
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-3">
-          <div
-            class="w-10 h-10 rounded-lg bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center ring-1 ring-primary/20">
-            <span class="text-primary font-extrabold">PSQ+</span>
-          </div>
-          <span class="hidden sm:inline font-semibold">Privy Stars Quiz</span>
-        </a>
+        <!-- SIGN-IN FORM -->
+        <form id="signin-form" class="space-y-4">
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="input input-bordered w-full"
+            autocomplete="email"
+            required />
 
-        <!-- Desktop links -->
-        <ul class="hidden md:flex items-center gap-6">
-          <li>
-            <a
-              class="nav-link spot"
-              data-nav="categories"
-              href="./categories.html"
-              >Categories</a
-            >
-          </li>
-          <li>
-            <a
-              class="nav-link spot"
-              data-nav="leaderboard"
-              href="./leaderboard.html"
-              >Leaderboard</a
-            >
-          </li>
-          <li>
-            <a
-              class="nav-link spot"
-              data-nav="dashboard"
-              href="./dashboard.html"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a class="nav-link spot" data-nav="profile" href="./profile.html"
-              >Profile</a
-            >
-          </li>
-        </ul>
+          <input
+            type="password"
+            placeholder="Password"
+            class="input input-bordered w-full"
+            autocomplete="current-password"
+            required />
+          <a href="./categories.html">
+            <button class="btn btn-primary w-full">Sign In</button>
+          </a>
+        </form>
 
-        <!-- Right Icons -->
-        <div class="flex items-center gap-2">
-          <button class="btn btn-ghost btn-circle">
-            <span class="iconify text-xl" data-icon="mdi:magnify"></span>
-          </button>
-          <button class="btn btn-ghost btn-circle relative">
-            <div class="indicator">
-              <span class="iconify text-xl" data-icon="mdi:bell-outline"></span>
-              <span
-                class="badge badge-primary badge-xs indicator-item animate-ping"></span>
-            </div>
-          </button>
+        <!-- SIGN-UP FORM -->
+        <form id="signup-form" class="space-y-4 hidden">
+          <input
+            type="text"
+            placeholder="Full Name"
+            class="input input-bordered w-full"
+            autocomplete="name"
+            required />
 
-          <!-- Avatar -->
-          <div class="dropdown dropdown-end hidden md:block">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full ring ring-primary ring-offset-2">
-                <img src="https://api.dicebear.com/9.x/adventurer/svg" />
-              </div>
-            </label>
-            <ul
-              tabindex="0"
-              class="menu menu-lg dropdown-content p-2 shadow-xl bg-base-300 rounded-xl">
-              <li><a href="./profile.html"> Profile</a></li>
-              <li><a href="./settings.html">Settings</a></li>
-              <li><a href="./logout.html" class="text-error">Logout</a></li>
-              <li><a href="./login.html" class="text-success">Login</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="input input-bordered w-full"
+            autocomplete="email"
+            required />
 
-    <!-- ===== Drawer ===== -->
-    <div class="drawer z-50">
-      <input id="omniDrawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content"></div>
-
-      <div class="drawer-side">
-        <label for="omniDrawer" class="drawer-overlay"></label>
-        <aside
-          class="w-80 bg-base-200 border-r p-6 min-h-full animate-slideInLeft">
-          <!-- Drawer header -->
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ring-1 ring-primary/20">
-                <span class="text-primary font-extrabold">PSQ+</span>
-              </div>
-              <div>
-                <div class="font-semibold">Privy Stars Quiz</div>
-                <div class="text-xs text-muted">Welcome back</div>
-              </div>
-            </div>
-            <label for="omniDrawer" class="btn btn-ghost btn-circle"
-              ><span class="iconify" data-icon="mdi:close"></span
-            ></label>
-          </div>
-
-          <!-- Drawer links -->
-          <nav class="space-y-1">
-            <a
-              class="drawer-link p-3 rounded-md flex items-center gap-3"
-              href="/"
-              data-nav="home"
-              ><span class="iconify" data-icon="mdi:home-outline"></span>Home</a
-            >
-            <a
-              class="drawer-link p-3 rounded-md flex items-center gap-3"
-              href="./categories.html"
-              data-nav="categories"
-              ><span class="iconify" data-icon="mdi:apps"></span>Categories</a
-            >
-            <a
-              class="drawer-link p-3 rounded-md flex items-center gap-3"
-              href="./leaderboard.html"
-              data-nav="leaderboard"
-              ><span class="iconify" data-icon="mdi:trophy-outline"></span
-              >Leaderboard</a
-            >
-            <a
-              class="drawer-link p-3 rounded-md flex items-center gap-3"
-              href="./profile.html"
-              data-nav="dashboard"
-              ><span
-                class="iconify"
-                data-icon="mdi:view-dashboard-outline"></span
-              >Dashboard</a
-            >
-            <a
-              class="drawer-link p-3 rounded-md flex items-center gap-3"
-              href="./profile.html"
-              data-nav="profile"
-              ><span
-                class="iconify"
-                data-icon="mdi:account-circle-outline"></span
-              >Profile</a
-            >
-          </nav>
-
-          <!-- Account -->
-          <div class="mt-6 pt-4 border-t">
-            <div class="text-xs text-muted mb-2">Account</div>
-            <a
-              class="flex items-center gap-3 p-3 rounded-md"
-              href="settings.html"
-              ><span class="iconify" data-icon="mdi:cog-outline"></span
-              >Settings</a
-            >
-            <a
-              class="flex items-center gap-3 p-3 rounded-md text-error"
-              href="logout.html"
-              ><span class="iconify" data-icon="mdi:logout-variant"></span
-              >Logout</a
-            >
-          </div>
-        </aside>
+          <input
+            type="password"
+            placeholder="Password"
+            class="input input-bordered w-full"
+            autocomplete="new-password"
+            required />
+          <a href="./categories.html">
+            <button class="btn btn-accent w-full">Create Account</button>
+          </a>
+        </form>
       </div>
     </div>
 
-    <!-- ===== Mobile Dock ===== -->
-    <div
-      class="fixed bottom-4 left-1/2 -translate-x-1/2 md:hidden bg-base-200/70 backdrop-blur-lg shadow-xl rounded-2xl px-5 py-4 flex items-center gap-6 border border-base-300 z-50">
-      <button data-nav="categories" class="dockItem btn btn-ghost">
-        <span class="iconify text-3xl" data-icon="mdi:apps"></span>
-      </button>
-      <button data-nav="leaderboard" class="dockItem btn btn-ghost">
-        <span class="iconify text-3xl" data-icon="mdi:trophy"></span>
-      </button>
-      <button data-open-drawer class="dockItem btn btn-ghost">
-        <span class="iconify text-3xl" data-icon="mdi:menu"></span>
-      </button>
-      <button data-nav="dashboard" class="dockItem btn btn-ghost">
-        <span class="iconify text-3xl" data-icon="mdi:view-dashboard"></span>
-      </button>
-      <button data-nav="profile" class="dockItem btn btn-ghost">
-        <span class="iconify text-3xl" data-icon="mdi:account-circle"></span>
-      </button>
-    </div>
-    <div class="my-5 pb-3 px-5">
-      <h1
-        class="text-3xl md:hidden fixed z-50 font-bold bg-linear-to-r from-primary to-accent to-45% bg-clip-text text-transparent">
-        Privy Stars
-      </h1>
-    </div>
-    <main class="md:mt-20">
-      <!-- 🌟 Hero Section -->
-      <section class="hero min-h-[50vh] bg-base-200 text-center px-4 sm:px-6">
-        <div class="hero-content flex-col max-w-3xl mx-auto">
-          <h1
-            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 gradient-text">
-            Welcome to
-            <span class="italic text-primary">Privy Stars Quiz System</span>
-          </h1>
-          <p class="text-base-content/80 leading-relaxed mb-3 sm:mb-4">
-            A smart, engaging, and fun quiz platform developed for
-            <strong>Privy Stars School</strong> — where learning meets
-            excitement.
-          </p>
-          <p class="text-base-content/70 mb-6 sm:mb-8">
-            Designed for students, teachers, and administrators to track
-            progress, share feedback, and enjoy an interactive learning
-            experience.
-          </p>
-          <a
-            href="categories.html"
-            class="btn btn-primary btn-wide max-w-full sm:max-w-xs mx-auto"
-            >Get Started</a
-          >
-        </div>
-      </section>
-
-      <!-- 🧠 About Section -->
-      <section class="py-16 bg-base-300">
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <h2 class="text-3xl font-bold mb-3 text-primary">
-            What is the Privy Stars Quiz App?
-          </h2>
-          <p class="text-base-content/80">
-            It’s a complete academic tool for the Privy Stars learning
-            ecosystem. Teachers can create quizzes, students can participate
-            from anywhere, and administrators can monitor progress — all in one
-            platform.
-          </p>
-        </div>
-
-        <div class="grid gap-10 lg:grid-cols-3 max-w-6xl mx-auto px-6">
-          <!-- Example card -->
-          <div
-            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl">
-            <div class="card-body text-center">
-              <span
-                class="iconify text-4xl mb-2 text-primary"
-                data-icon="mdi:home"></span>
-              <h3 class="card-title justify-center text-primary">Home</h3>
-              <p class="text-base-content/80">
-                Entry point welcoming users and introducing quiz categories.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl">
-            <div class="card-body text-center">
-              <span
-                class="iconify text-4xl mb-2 text-accent"
-                data-icon="mdi:login"></span>
-              <h3 class="card-title justify-center text-accent">Login</h3>
-              <p class="text-base-content/80">
-                Secure access for students, teachers, and admins.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="card bg-base-200 shadow-lg hover:shadow-xl transition rounded-2xl">
-            <div class="card-body text-center">
-              <span
-                class="iconify text-4xl mb-2 text-info"
-                data-icon="mdi:quiz"></span>
-              <h3 class="card-title justify-center text-info">Quiz</h3>
-              <p class="text-base-content/80">
-                Timed questions with progress tracking and feedback.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ✨ Why Privy Stars -->
-      <section class="py-16 bg-base-200">
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <h2 class="text-3xl font-bold mb-3 text-secondary">
-            Why Choose Privy Stars Quiz?
-          </h2>
-          <p class="text-base-content/80">
-            Learning should be exciting! Privy Stars Quiz blends education with
-            play, fun, and growth.
-          </p>
-        </div>
-
-        <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto px-6">
-          <div class="card bg-base-300 shadow-md rounded-2xl">
-            <div class="card-body items-center text-center">
-              <span
-                class="iconify text-4xl text-primary mb-2"
-                data-icon="mdi:target"></span>
-              <h3 class="card-title text-primary">Goal-Oriented</h3>
-              <p class="text-base-content/80">
-                Strengthen understanding with consistent assessments.
-              </p>
-            </div>
-          </div>
-
-          <div class="card bg-base-300 shadow-md rounded-2xl">
-            <div class="card-body items-center text-center">
-              <span
-                class="iconify text-4xl text-accent mb-2"
-                data-icon="mdi:gamepad-variant"></span>
-              <h3 class="card-title text-accent">Interactive</h3>
-              <p class="text-base-content/80">
-                Animations, instant feedback, and sound engage students.
-              </p>
-            </div>
-          </div>
-
-          <div class="card bg-base-300 shadow-md rounded-2xl">
-            <div class="card-body items-center text-center">
-              <span
-                class="iconify text-4xl text-info mb-2"
-                data-icon="mdi:book-open-page-variant"></span>
-              <h3 class="card-title text-info">Educational</h3>
-              <p class="text-base-content/80">
-                Boosts knowledge, comprehension, and critical thinking.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ⚡ Footer -->
-    <footer
-      class="bg-base-300 text-base-content py-10 px-6 flex flex-wrap justify-between gap-8 md:gap-16">
-      <aside class="max-w-sm">
-        <h3 class="font-bold text-xl mb-2 text-primary">Privy Stars Quiz</h3>
-        <p class="opacity-80 leading-relaxed">
-          A digital learning system by
-          <strong class="text-primary">Privy Stars School</strong> — empowering
-          students to learn, play, and grow smarter.
-        </p>
-      </aside>
-
-      <nav class="flex flex-col gap-2">
-        <h6 class="footer-title text-base font-semibold mb-2 text-accent">
-          Explore
-        </h6>
-        <a href="index.html" class="link link-hover hover:text-primary">Home</a>
-        <a href="#" class="link link-hover hover:text-primary">Quiz</a>
-        <a href="#" class="link link-hover hover:text-primary">Leaderboard</a>
-        <a href="#" class="link link-hover hover:text-primary">Dashboard</a>
-      </nav>
-
-      <nav class="flex flex-col gap-2">
-        <h6 class="footer-title text-base font-semibold mb-2 text-info">
-          Support
-        </h6>
-        <a href="#" class="link link-hover hover:text-accent">Help Center</a>
-        <a href="feedback.html" class="link link-hover hover:text-accent"
-          >Feedback</a
-        >
-        <a href="feedback.html" class="link link-hover hover:text-accent"
-          >Report Issue</a
-        >
-      </nav>
-
-      <nav class="flex flex-col gap-2">
-        <h6 class="footer-title text-base font-semibold mb-2 text-warning">
-          School
-        </h6>
-        <a href="#" class="link link-hover hover:text-info"
-          >Privy Stars School</a
-        >
-        <a href="#" class="link link-hover hover:text-info">Our Mission</a>
-        <a href="#" class="link link-hover hover:text-info">Contact Us</a>
-      </nav>
-    </footer>
-
-    <script type="module" src="/src/js/main.js"></script>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="./src/js/main.js"></script>
   </body>
 </html>
