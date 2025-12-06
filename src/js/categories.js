@@ -19,6 +19,7 @@ async function loadCategories() {
 }
 
 // ======== RENDER DESKTOP ========
+
 function renderDesktop(categories) {
   desktopContainer.innerHTML = "";
 
