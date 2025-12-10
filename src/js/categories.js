@@ -23,6 +23,7 @@ loadCategories();
 // =============================
 //  RENDER DESKTOP
 // =============================
+
 function renderDesktop(categories) {
   desktopContainer.innerHTML = "";
 
@@ -41,6 +42,7 @@ function renderDesktop(categories) {
 }
 
 // ======== RENDER MOBILE ========
+
 function renderMobile(categories) {
   mobileContainer.innerHTML = "";
 
@@ -59,6 +61,7 @@ function renderMobile(categories) {
 }
 
 // ======== SAVE CATEGORY AND REDIRECT ========
+
 function selectCategory(id, name) {
   localStorage.setItem("selectedCategoryId", id);
   localStorage.setItem("selectedCategoryName", name);
